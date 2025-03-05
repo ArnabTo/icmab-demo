@@ -7,8 +7,11 @@ import { useTheme } from '@mui/material/styles';
 
 import { RouterLink } from 'src/routes/components';
 
-import { logoClasses } from './classes';
+import { CONFIG } from 'src/config-global';
 
+import { Image } from 'src/components/image';
+
+import { logoClasses } from './classes';
 // ----------------------------------------------------------------------
 
 export const Logo = forwardRef(
@@ -198,15 +201,21 @@ export const Logo = forwardRef(
         aria-label="Logo"
         sx={{
           ...baseSize,
+          width:'200px',
           flexShrink: 0,
-          display: 'inline-flex',
-          verticalAlign: 'middle',
           ...(disableLink && { pointerEvents: 'none' }),
           ...sx,
         }}
         {...other}
       >
-        {isSingle ? singleLogo : fullLogo}
+        {/* {isSingle ? singleLogo : fullLogo} */}
+        <Image
+          sx={{
+            width: '100px',
+            height: 'auto',
+            objectFit: 'contain',
+          }}
+          src={`${CONFIG.assetsDir}/logo/logo-single.png`} />
       </Box>
     );
   }

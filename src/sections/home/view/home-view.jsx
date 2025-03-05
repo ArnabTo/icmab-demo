@@ -19,6 +19,7 @@ import { HomeHighlightFeatures } from '../home-highlight-features';
 import HomeLandingSection from '../home-landing-section';
 import HomeProgramsEvents from '../home-programs-events';
 import HomeGridGallery from '../home-gallery-comp';
+import HomeLanding from '../home-landing';
 
 // ----------------------------------------------------------------------
 
@@ -41,7 +42,8 @@ export function HomeView() {
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
 
-        <HomeProgramsEvents/>
+        <HomeLanding/>
+        {/* <HomeProgramsEvents/> */}
 
         <HomeGridGallery/>
         

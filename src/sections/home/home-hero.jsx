@@ -17,6 +17,7 @@ import { useResponsive } from 'src/hooks/use-responsive';
 import { CONFIG } from 'src/config-global';
 import { textGradient } from 'src/theme/styles';
 
+import { Image } from 'src/components/image';
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
 
@@ -61,7 +62,7 @@ export function HomeHero({ sx, ...other }) {
           my: 0,
           mx: 'auto',
           maxWidth: 1080,
-          color: 'common.white',
+          color: theme.palette.text.secondary,
           fontFamily: theme.typography.fontSecondaryFamily,
           fontSize: { xs: 36, sm: 48, md: 56, lg: 72 },
           lineHeight: { xs: '54px', sm: '72px', md: '84px', lg: '90px' },
@@ -80,7 +81,7 @@ export function HomeHero({ sx, ...other }) {
           }}
           sx={{
             ...textGradient(
-              `300deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.warning.main} 25%, ${theme.vars.palette.primary.main} 50%, ${theme.vars.palette.warning.main} 75%, ${theme.vars.palette.primary.main} 100%`
+              `300deg, ${theme.vars.palette.info.main} 0%, ${theme.vars.palette.secondary.main} 25%, ${theme.vars.palette.info.main} 50%, ${theme.vars.palette.secondary.main} 75%, ${theme.vars.palette.info.main} 100%`
             ),
             backgroundSize: '400%',
             ml: { xs: 0.75, md: 1, xl: 1.5 },
@@ -98,7 +99,7 @@ export function HomeHero({ sx, ...other }) {
         variant="body2"
         sx={{
           mx: 'auto',
-          color: 'common.white',
+          color: theme.palette.text.primary,
           [theme.breakpoints.up(smKey)]: { whiteSpace: 'pre' },
           [theme.breakpoints.up(lgKey)]: { fontSize: 20, lineHeight: '36px' },
         }}
@@ -114,12 +115,12 @@ export function HomeHero({ sx, ...other }) {
       <AnimatedDiv>
         <Stack alignItems="center" spacing={2.5}>
           <Button
+          sx={{ textTransform: 'none', backgroundColor: 'secondary.main' }}
             component={RouterLink}
             href={paths.dashboard.root}
-            color="inherit"
+            color="info"
             size="large"
             variant="contained"
-            backgroundColor="common.white"
             startIcon={<Iconify width={24} icon="iconoir:flash" />}
           >
             <span>
@@ -141,7 +142,7 @@ export function HomeHero({ sx, ...other }) {
         position: 'relative',
         [theme.breakpoints.up(mdKey)]: {
           minHeight: 760,
-          height: '100vh',
+          height: 'fit-content',
           maxHeight: 1440,
           display: 'block',
           willChange: 'opacity',
@@ -152,7 +153,7 @@ export function HomeHero({ sx, ...other }) {
       {...other}
     >
 
-      <video autoPlay loop muted playsInline crossOrigin='anonymous'
+      {/* <video autoPlay loop muted playsInline crossOrigin='anonymous'
         style={{
           position: "absolute",
           top: 0,
@@ -165,8 +166,8 @@ export function HomeHero({ sx, ...other }) {
       >
         <source src={`${CONFIG.assetsDir}/assets/background/video.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
-      </video>
-      <Box sx={{
+      </video> */}
+      {/* <Box sx={{
         position: "absolute",
         top: 0,
         left: 0,
@@ -175,7 +176,7 @@ export function HomeHero({ sx, ...other }) {
         backgroundColor: "common.black",
         opacity: 0.5,
         zIndex: -1,
-      }} />
+      }} /> */}
       <Box
         component={m.div}
         style={{ opacity }}
@@ -209,13 +210,22 @@ export function HomeHero({ sx, ...other }) {
           }}
         >
           <Stack spacing={3} sx={{ textAlign: 'center' }}>
-            <m.div style={{ y: y1 }}>{renderHeading}</m.div>
-            <m.div style={{ y: y2 }}>{renderText}</m.div>
+            <m.div style={{ y: y1 }}>
+              <Image 
+              sx={{
+              width: '200px',
+              height: 'auto',
+              objectFit: 'contain',
+            }}
+             src={`${CONFIG.assetsDir}/logo/logo-single.png`}/>
+             </m.div>
+            <m.div style={{ y: y2 }}>{renderHeading}</m.div>
+            {/* <m.div style={{ y: y3 }}>{renderText}</m.div> */}
           </Stack>
           <m.div style={{ y: y4 }}>{renderButtons}</m.div>
         </Container>
 
-        {/* <HeroBackground /> */}
+        <HeroBackground />
       </Box>
     </Box>
   );

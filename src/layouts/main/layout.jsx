@@ -45,7 +45,7 @@ export function MainLayout({ sx, data, children, header }) {
        *************************************** */
       headerSection={
         <HeaderSection
-          layoutQuery={layoutQuery}
+          // layoutQuery={layoutQuery}
           sx={header?.sx}
           slots={{
             topArea: (
@@ -76,31 +76,25 @@ export function MainLayout({ sx, data, children, header }) {
             rightArea: (
               <>
                 {/* -- Nav desktop -- */}
-                <NavDesktop
+                <NavMobile
                   data={navData}
-                  sx={{
-                    display: 'none',
-                    [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
-                  }}
+                  open={mobileNavOpen.value}
+                  onClose={mobileNavOpen.onFalse}
                 />
                 <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
-                  {/* -- Settings button -- */}
-                  <SettingsButton />
                   {/* -- Sign in button -- */}
                   <SignInButton />
-                  {/* -- Purchase button -- */}
-                  <Button
-                    variant="contained"
-                    rel="noopener"
-                    target="_blank"
-                    href={paths.minimalStore}
+                  {/* -- Settings button -- */}
+                  <SettingsButton />
+                  {/* -- Menu Open/Close button -- */}
+                  <MenuButton
+                    onClick={mobileNavOpen.onTrue}
                     sx={{
-                      display: 'none',
-                      [theme.breakpoints.up(layoutQuery)]: { display: 'inline-flex' },
+                      mr: 1,
+                      ml: -1,
+                      width: 40,
                     }}
-                  >
-                    Purchase
-                  </Button>
+                  />
                 </Box>
               </>
             ),
