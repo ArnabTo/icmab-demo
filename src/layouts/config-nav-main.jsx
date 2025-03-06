@@ -9,12 +9,27 @@ import { Iconify } from 'src/components/iconify';
 export const navData = [
   { title: 'Home', path: '/', icon: <Iconify width={22} icon="solar:home-2-bold-duotone" /> },
   {
-    title: 'Components',
+    title: 'Academics',
     path: paths.components,
     icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
   },
   {
-    title: 'Pages',
+    title: 'Studets',
+    path: paths.components,
+    icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
+  },
+  {
+    title: 'Members',
+    path: paths.components,
+    icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
+  },
+  {
+    title: 'Training',
+    path: paths.components,
+    icon: <Iconify width={22} icon="solar:atom-bold-duotone" />,
+  },
+  {
+    title: 'Admission and Aid',
     path: '/pages',
     icon: <Iconify width={22} icon="solar:file-bold-duotone" />,
     children: [

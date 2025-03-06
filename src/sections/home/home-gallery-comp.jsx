@@ -19,13 +19,11 @@ export default function HomeGridGallery(){
       offscreen: {
         opacity: 0,
         y: 100,
-        rotate: -10,
         scale: 0.8
       },
       onscreen: {
         opacity: 1,
         y: 0,
-        rotate: 0,
         scale: 1,
         transition: {
           type: "spring",
@@ -36,10 +34,9 @@ export default function HomeGridGallery(){
     };
   
     const hoverVariants = {
-      rest: { scale: 1, rotate: 0 },
+      rest: { scale: 1},
       hover: { 
         scale: 1.05,
-        rotate: 2,
         transition: { duration: 0.3 }
       }
     };
@@ -52,13 +49,12 @@ export default function HomeGridGallery(){
         variants={scrollVariants}
         whileHover={{
           scale: 1.05,
-          rotate: 3,
           transition: { duration: 0.3 }
         }}
         style={{
           width: '100%',
           height: '100%',
-          backgroundColor: '#f0f0f0',
+          backgroundColor: 'yellow', 
           padding: '20px',
           borderRadius: '8px',
           display: 'flex',
@@ -79,10 +75,10 @@ export default function HomeGridGallery(){
             ':hover': { transform: 'scale(1.1)' }
           }}
         >
-          #{title}
+          {title}
         </Typography>
         <Typography 
-          variant="body2" 
+          variant="body1" 
           sx={{
             marginTop: '10px',
             transition: 'transform 0.3s',
@@ -101,8 +97,7 @@ export default function HomeGridGallery(){
         viewport={{ once: true, amount: 0.5 }}
         variants={scrollVariants}
         whileHover={{
-          scale: 1.1,
-          rotate: 3,
+          scale: 1.05,
           transition: { duration: 0.3 }
         }}
         style={{
@@ -118,7 +113,7 @@ export default function HomeGridGallery(){
       >
         <m.img
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
             transition: { duration: 0.3 }
           }}
           src={src}
@@ -152,7 +147,8 @@ export default function HomeGridGallery(){
           <Box sx={{ 
             overflow: 'hidden',
             margin: 'auto',
-            width: '100%'
+            width: '100%',
+            pb:6
           }}>
             <Grid 
               container 
@@ -160,12 +156,13 @@ export default function HomeGridGallery(){
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gridTemplateRows: 'repeat(3, 300px)',
-                width: '100%'
+                width: '100%',
+                gap:1,
               }}
             >
               {/* First Row */}
               <Grid item sx={{ gridColumn: '1 / 2', gridRow: '1 / 2' }}>
-                <DescriptionBox title="Box 1" description="Description for Box 1" />
+                <DescriptionBox title="#No 1" description="In Bangladesh"/>
               </Grid>
               <Grid item sx={{ gridColumn: '2 / 3', gridRow: '1 / 2' }}>
                 <ImageItem src={images[0]} />
@@ -179,7 +176,7 @@ export default function HomeGridGallery(){
                 <ImageItem src={images[2]} rowSpan={2} />
               </Grid>
               <Grid item sx={{ gridColumn: '2 / 3', gridRow: '2 / 3' }}>
-                <DescriptionBox title="Box 2" description="Description for Box 2"/>
+                <DescriptionBox title="#15" description="Worldwide"/>
               </Grid>
               <Grid item sx={{ gridColumn: '3 / 4', gridRow: '2 / 4' }}>
                 <ImageItem src={images[3]} rowSpan={2} />

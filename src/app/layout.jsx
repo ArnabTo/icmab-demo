@@ -1,5 +1,5 @@
 import 'src/global.css';
-
+import Script from 'next/script';
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
 import { CONFIG } from 'src/config-global';
@@ -23,6 +23,7 @@ import { AuthProvider as AmplifyAuthProvider } from 'src/auth/context/amplify';
 import { AuthProvider as SupabaseAuthProvider } from 'src/auth/context/supabase';
 import { AuthProvider as FirebaseAuthProvider } from 'src/auth/context/firebase';
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 // ----------------------------------------------------------------------
 
 const AuthProvider =
@@ -58,8 +59,10 @@ export default async function RootLayout({ children }) {
           modeStorageKey={schemeConfig.modeStorageKey}
         />
 
-        <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
-          <LocalizationProvider>
+        {/* <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
+      
+        </I18nProvider> */}
+            <LocalizationProvider>
             <AuthProvider>
               <SettingsProvider settings={defaultSettings}>
                 <ThemeProvider>
@@ -75,8 +78,8 @@ export default async function RootLayout({ children }) {
               </SettingsProvider>
             </AuthProvider>
           </LocalizationProvider>
-        </I18nProvider>
       </body>
+      <GoogleAnalytics gaId="G-481156122"/>
     </html>
   );
 }

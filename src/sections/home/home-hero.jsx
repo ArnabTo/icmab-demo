@@ -152,31 +152,6 @@ export function HomeHero({ sx, ...other }) {
       }}
       {...other}
     >
-
-      {/* <video autoPlay loop muted playsInline crossOrigin='anonymous'
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: -2,
-        }}
-      >
-        <source src={`${CONFIG.assetsDir}/assets/background/video.mp4`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video> */}
-      {/* <Box sx={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "common.black",
-        opacity: 0.5,
-        zIndex: -1,
-      }} /> */}
       <Box
         component={m.div}
         style={{ opacity }}

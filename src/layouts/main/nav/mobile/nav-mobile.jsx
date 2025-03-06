@@ -59,7 +59,7 @@ export function NavMobile({ data, open, onClose, slots, sx }) {
         <Box gap={1.5} display="flex" sx={{ px: 2.5, py: 3 }}>
           <SignInButton fullWidth />
 
-          <Button
+          {/* <Button
             fullWidth
             variant="contained"
             rel="noopener"
@@ -67,7 +67,7 @@ export function NavMobile({ data, open, onClose, slots, sx }) {
             href={paths.minimalStore}
           >
             Purchase
-          </Button>
+          </Button> */}
         </Box>
       )}
     </Drawer>
