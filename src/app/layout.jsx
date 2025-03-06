@@ -59,10 +59,8 @@ export default async function RootLayout({ children }) {
           modeStorageKey={schemeConfig.modeStorageKey}
         />
 
-        {/* <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
-      
-        </I18nProvider> */}
-            <LocalizationProvider>
+        <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
+        <LocalizationProvider>
             <AuthProvider>
               <SettingsProvider settings={defaultSettings}>
                 <ThemeProvider>
@@ -78,6 +76,7 @@ export default async function RootLayout({ children }) {
               </SettingsProvider>
             </AuthProvider>
           </LocalizationProvider>
+        </I18nProvider>
       </body>
       <GoogleAnalytics gaId="G-481156122"/>
     </html>

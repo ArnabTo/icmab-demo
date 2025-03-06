@@ -3,9 +3,19 @@ import axios, { endpoints } from 'src/utils/axios';
 // ----------------------------------------------------------------------
 
 export async function getPosts() {
-  const res = await axios.get(endpoints.post.list);
+  try {
+    const res = await axios.get(endpoints.post.list);
+    const {data} = res;
+   console.log(data);
+    if (!Array.isArray(data.posts)) {
+      throw new Error('Invalid posts data');
+    }
 
-  return res.data;
+    return data;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return { posts: [] }; // Return a fallback value
+  }
 }
 
 // ----------------------------------------------------------------------
