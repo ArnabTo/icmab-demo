@@ -69,7 +69,7 @@ export default function HomeLanding() {
                         <Typography variant="h3" color="common.white">
                             Welcome to ICMAB
                         </Typography>
-                        <Typography variant="h2" color="common.white">
+                        <Typography variant="h3" color="common.white">
                             Enter into Lifetime profession with CMA Certificate.
                         </Typography>
                         <Typography variant="body1" color="common.white">
