@@ -20,21 +20,31 @@ import { Logo } from 'src/components/logo';
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'About Us',
     children: [
-      { name: 'About us', href: paths.about },
-      { name: 'Contact us', href: paths.contact },
-      { name: 'FAQs', href: paths.faqs },
+      { name: 'The Institute', href: paths.about },
+      { name: 'Corporate Headquarters', href: paths.contact },
+      { name: 'International Global Affiliations', href: paths.faqs },
+      { name: 'New Curriculum Structure', href: paths.faqs },
     ],
   },
   {
-    headline: 'Legal',
+    headline: 'Students',
     children: [
-      { name: 'Terms and condition', href: '#' },
-      { name: 'Privacy policy', href: '#' },
+      { name: 'Student Statistics', href: '#' },
+      { name: 'Student Directory', href: '#' },
+      { name: 'Student Notice Board', href: '#' },
+      { name: 'Download Forms', href: '#' },
     ],
   },
-  { headline: 'Contact', children: [{ name: 'support@minimals.cc', href: '#' }] },
+  {
+    headline: 'Members',
+    children: [
+      { name: 'Membership', href: '#' },
+      { name: `Desk of Member's Affair`, href: '#' },
+      { name: 'Membership Form', href: '#' },
+    ],
+  },
 ];
 
 // ----------------------------------------------------------------------
@@ -45,7 +55,6 @@ export function Footer({ layoutQuery, sx }) {
   return (
     <Box component="footer" sx={{ position: 'relative', bgcolor: 'background.default', ...sx }}>
       <Divider />
-
       <Container
         sx={{
           pb: 5,
@@ -54,27 +63,28 @@ export function Footer({ layoutQuery, sx }) {
           [theme.breakpoints.up(layoutQuery)]: { textAlign: 'unset' },
         }}
       >
-        <Logo />
-
         <Grid
           container
+          spacing={3}
           sx={{
             mt: 3,
             justifyContent: 'center',
             [theme.breakpoints.up(layoutQuery)]: { justifyContent: 'space-between' },
           }}
         >
-          <Grid {...{ xs: 12, [layoutQuery]: 3 }}>
+          <Grid item xs={12} md={3}>
+            <Logo />
             <Typography
               variant="body2"
               sx={{
                 mx: 'auto',
                 maxWidth: 280,
+                mt:2,
                 [theme.breakpoints.up(layoutQuery)]: { mx: 'unset' },
               }}
             >
               The starting point for your next project with Minimal UI Kit, built on the newest
-              version of Material-UI ©, ready to be customized to your style.
+              version of Material-UI &copy;, ready to be customized to your style.
             </Typography>
 
             <Stack
@@ -97,15 +107,93 @@ export function Footer({ layoutQuery, sx }) {
             </Stack>
           </Grid>
 
-          <Grid {...{ xs: 12, [layoutQuery]: 6 }}>
+          <Grid item xs={12} md={3}>
             <Stack
-              spacing={5}
+              spacing={2}
               sx={{
                 flexDirection: 'column',
-                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row' },
+                alignItems: 'center',
+                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
               }}
             >
-              {LINKS.map((list) => (
+              {LINKS.slice(0, 1).map((list) => (
+                <Stack
+                  key={list.headline}
+                  spacing={2}
+                  sx={{
+                    width: 1,
+                    alignItems: 'center',
+                    [theme.breakpoints.up(layoutQuery)]: { alignItems: 'flex-start' },
+                  }}
+                >
+                  <Typography component="div" variant="overline">
+                    {list.headline}
+                  </Typography>
+
+                  {list.children.map((link) => (
+                    <Link
+                      key={link.name}
+                      component={RouterLink}
+                      href={link.href}
+                      color="inherit"
+                      variant="body2"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <Stack
+              spacing={2}
+              sx={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
+              }}
+            >
+              {LINKS.slice(1, 2).map((list) => (
+                <Stack
+                  key={list.headline}
+                  spacing={2}
+                  sx={{
+                    width: 1,
+                    alignItems: 'center',
+                    [theme.breakpoints.up(layoutQuery)]: { alignItems: 'flex-start' },
+                  }}
+                >
+                  <Typography component="div" variant="overline">
+                    {list.headline}
+                  </Typography>
+
+                  {list.children.map((link) => (
+                    <Link
+                      key={link.name}
+                      component={RouterLink}
+                      href={link.href}
+                      color="inherit"
+                      variant="body2"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </Stack>
+              ))}
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} md={3}>
+            <Stack
+              spacing={2}
+              sx={{
+                flexDirection: 'column',
+                alignItems: 'center',
+                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
+              }}
+            >
+              {LINKS.slice(2).map((list) => (
                 <Stack
                   key={list.headline}
                   spacing={2}
@@ -136,7 +224,7 @@ export function Footer({ layoutQuery, sx }) {
           </Grid>
         </Grid>
 
-        <Typography variant="body2" sx={{ mt: 10 }}>
+        <Typography variant="body2">
           © All rights reserved.
         </Typography>
       </Container>
@@ -151,7 +239,6 @@ export function HomeFooter({ sx }) {
     <Box
       component="footer"
       sx={{
-        py: 5,
         textAlign: 'center',
         position: 'relative',
         bgcolor: 'background.default',
@@ -159,12 +246,13 @@ export function HomeFooter({ sx }) {
       }}
     >
       <Container>
-        <Logo />
-        <Box sx={{ mt: 1, typography: 'caption' }}>
+        {/* <Logo /> */}
+        <Footer />
+        {/* <Box sx={{ mt: 1, typography: 'caption' }}>
           © All rights reserved.
           <br /> made by
           <Link href="https://minimals.cc/"> minimals.cc </Link>
-        </Box>
+        </Box> */}
       </Container>
     </Box>
   );

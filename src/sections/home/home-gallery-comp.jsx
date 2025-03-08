@@ -197,10 +197,10 @@ export default function HomeGridGallery() {
 
         <Container sx={{ position: 'relative', alignItems: 'center' }}>
           <SectionTitle
-            caption="Success"
-            title="Our Success"
+            caption="Stories"
+            title="Our"
             txtGradient="Stories"
-            sx={{ mb: { xs: 5, md: 8 }, textAlign: { xs: 'center', md: 'left' } }}
+            sx={{ mb: { xs: 5}, textAlign: { xs: 'center', md: 'left' } }}
           />
           <LazyMotion features={domAnimation}>
             <m.div

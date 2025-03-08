@@ -1,12 +1,14 @@
 import { m } from 'framer-motion';
 
 import Box from '@mui/material/Box';
+import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
-import {  useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
+import { Iconify } from 'src/components/iconify';
 import { MotionViewport } from 'src/components/animate';
 import {
     Carousel,
@@ -15,6 +17,7 @@ import {
 } from 'src/components/carousel';
 
 import { FloatLine, FloatPlusIcon } from './components/svg-elements';
+import { SectionTitle } from './components/section-title';
 
 // ----------------------------------------------------------------------
 
@@ -126,6 +129,7 @@ function CarouselItem({ item, selected }) {
             sx={{
                 opacity: 0,
                 width: '100%',
+                pt:3,
                 transition: (transitionTheme) =>
                     transitionTheme.transitions.create('opacity', {
                         easing: transitionTheme.transitions.easing.easeInOut,
@@ -144,18 +148,26 @@ function CarouselItem({ item, selected }) {
                     duration: 0.5,
                 }}
             >
-                <Typography
-                    variant="h3"
-                    component="h1"
-                    sx={{
-                        py: 5,
-                        color: theme.palette.mode === 'dark' ? 'common.white' : 'common.black',
-                        fontWeight: 'light',
-                        fontStyle: 'italic',
-                    }}
-                >
-                    &ldquo;{item.text}&rdquo;
-                </Typography>
+                            <SectionTitle
+                caption="Inspiration"
+                title="Quotes"
+                txtGradient="Motivation"
+                sx={{ mb: { xs: 3 }, textAlign: { xs: 'center' } }}
+            />
+                <Stack direction="row" spacing={1}>
+                    <Typography
+                        variant="h3"
+                        component="h1"
+                        sx={{
+                            color: theme.palette.mode === 'dark' ? 'common.white' : 'common.black',
+                            fontWeight: 'light',
+                            fontStyle: 'italic',
+                        }}
+                    >
+                        <Iconify icon="gravity-ui:quote-open" width={45} sx={{ mt: -5, color: 'primary.main', opacity: 0.35 }} />
+                        {item.text}
+                    </Typography>
+                </Stack>
 
                 <Typography
                     variant="h6"

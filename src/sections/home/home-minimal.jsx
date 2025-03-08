@@ -71,23 +71,23 @@ export function HomeMinimal({ sx, ...other }) {
   const locationData = [
     {
       "name": "Dhaka",
-      "value": 1,
+      "value": 14,
       "city": "Dhaka"
     },
     {
       "name": "Narsingdi",
-      "value": 2,
+      "value": 16,
       "city": "Narsingdi"
     },
     {
-      "name": "Dhaka",
-      "value": 20,
-      "city": "Dhaka"
+      "name": "Narayanganj",
+      "value": 30,
+      "city": "Narayanganj"
     },
     {
-      "name": "Dhaka",
-      "value": 20,
-      "city": "Dhaka"
+      "name": "Cumilla",
+      "value": 15,
+      "city": "Cumilla"
     },
  
   ];

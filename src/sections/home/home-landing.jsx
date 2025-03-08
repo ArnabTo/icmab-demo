@@ -32,8 +32,9 @@ export default function HomeLanding() {
             ref={ref}
             sx={{
                 py: { xs: 10, md: 15 },
-                height: "100vh",
+                height: { xs: "100vh", md: "calc(100vh - 64px)" },
                 display: "flex",
+                flexDirection: { xs: "column", md: "row" },
                 justifyContent: "center",
                 alignItems: "center", // Ensures both sides align
                 position: "relative",
@@ -44,7 +45,7 @@ export default function HomeLanding() {
             <Box
                 sx={{
                     width: "100%",
-                    height:"60%",
+                    height:"100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center", 
@@ -86,7 +87,7 @@ export default function HomeLanding() {
             <Box
                 sx={{
                     width: "100%",
-                    height:"60%",
+                    height:"100%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center", // Aligns with left side

@@ -91,7 +91,7 @@ export default function HomeOurSuccessStories() {
                             caption="Success"
                             title="Our Success"
                             txtGradient="Stories"
-                            sx={{ mb: { xs: 5, md: 8 }, textAlign: { xs: 'center', md: 'left' } }}
+                            sx={{ mb: { xs: 5 }, textAlign: { xs: 'center', md: 'left' } }}
                         />
                         <Box sx={{ position: 'relative' }}>
                             <Carousel carousel={carousel} sx={{ p: 2 }}>
