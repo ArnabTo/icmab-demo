@@ -2,22 +2,34 @@ import React, { useRef } from "react";
 import { m, useInView } from "framer-motion";
 
 import { useTheme } from "@mui/material/styles";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 
 import { CONFIG } from "src/config-global";
+import { FloatLine, FloatPlusIcon } from "./components/svg-elements";
+import { MotionViewport } from "src/components/animate";
 
 export default function HomeLanding() {
     const theme = useTheme();
     const ref = useRef(null);
+
+    const renderLines = (
+        <>
+            <FloatPlusIcon sx={{ top: 72, left: 72 }} />
+            <FloatPlusIcon sx={{ bottom: 72, left: 72 }} />
+            <FloatLine sx={{ top: 80, left: 0 }} />
+            <FloatLine sx={{ bottom: 80, left: 0 }} />
+            <FloatLine vertical sx={{ top: 0, left: 80 }} />
+        </>
+    );
 
     // Detect when section is 10% visible
     const isInView = useInView(ref, { amount: 0.1, once: true });
 
     return (
         <Box
+            component="section"
             ref={ref}
             sx={{
-                px: { xs: 2, md: 5 },
                 py: { xs: 10, md: 15 },
                 height: "100vh",
                 display: "flex",
@@ -30,40 +42,26 @@ export default function HomeLanding() {
             {/* Left Side - Text */}
             <Box
                 sx={{
-                    width: "50%",
+                    width: "100%",
+                    height:"60%",
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center", // Ensures it wraps content properly
-                    position: "relative",
-                    zIndex: 5,
-
-                    "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        width: "30px", // Adjust for dome size
-                        height: "40px", // Half of width for dome effect
-                        backgroundColor: theme.palette.secondary.main, // Same as text box
-                        bottom: "50%", // Center vertically
-                        right: "-30px", // Slight overlap on the right
-                        transform: "translateY(50%)", // Rotate the shape
-                        zIndex: 6, // Keep it above the video
-                        clipPath: "polygon(0% 0%, 100% 50%, 0% 100%)",
-
-                    },
-                }}
+                    justifyContent: "center",
+                    alignItems: "center", 
+                    zIndex:5
+                  }}
             >
                 <m.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{ width: "100%" }}
+                    style={{ width: "100%", height:'100%' }}
                 >
                     <Box
                         sx={{
                             background: theme.palette.secondary.main,
                             opacity: 0.9,
-                            borderRadius: 2,
                             padding: theme.spacing(3),
+                            height:"100%"
                         }}
                     >
                         <Typography variant="h3" color="common.white">
@@ -86,7 +84,8 @@ export default function HomeLanding() {
             {/* Right Side - Video */}
             <Box
                 sx={{
-                    width: "50%",
+                    width: "100%",
+                    height:"60%",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center", // Aligns with left side
@@ -98,11 +97,10 @@ export default function HomeLanding() {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     style={{
                         width: "100%",
-                        height: "auto", // Adjusts height to match left box
+                        height: "100%", // Adjusts height to match left box
                         maxHeight: "100%", // Prevents overflow
                         objectFit: "cover",
                         zIndex: 1,
-                        borderRadius: "10px",
                     }}
                     autoPlay
                     loop
@@ -114,6 +112,12 @@ export default function HomeLanding() {
                     Your browser does not support the video tag.
                 </m.video>
             </Box>
+            {/* <MotionViewport>
+                {renderLines}
+                <Container sx={{display:'flex'}}>
+         
+                </Container>
+            </MotionViewport> */}
         </Box>
     );
 }

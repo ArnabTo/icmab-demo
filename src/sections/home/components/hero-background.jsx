@@ -29,9 +29,9 @@ export function HeroBackground({ sx, ...other }) {
         '--stroke-spacing': '80px',
         /* line */
         '--hero-line-stroke-width': 1,
-        '--hero-line-stroke-color': varAlpha(theme.vars.palette.grey['500Channel'], 0.32),
+        '--hero-line-stroke-color': varAlpha(theme.vars.palette.grey['500Channel'], 1),
         [stylesMode.dark]: {
-          '--hero-line-stroke-color': varAlpha(theme.vars.palette.grey['600Channel'], 0.16),
+          '--hero-line-stroke-color': varAlpha(theme.vars.palette.grey['600Channel'], 0.3),
         },
         /* text */
         '--hero-text-stroke-width': 1,

@@ -11,7 +11,7 @@ import { varFade } from 'src/components/animate';
 export function Lines({ strokeCount }) {
   const draw = {
     x: {
-      hidden: { x2: 0, strokeOpacity: 0 },
+      hidden: { x2: 0, strokeOpacity: 2 },
       visible: (i) => {
         const delay = 1 + i * 0.5;
         return {

@@ -1,9 +1,9 @@
 import { m } from 'framer-motion'
 import React, { useEffect, useState } from 'react'
 
-import { Pie, Cell, Legend, PieChart, ResponsiveContainer } from 'recharts'
+import { Pie, Cell, Legend, PieChart, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 
-import { Box, Card, CardContent, CircularProgress, Grid, Paper, Tooltip, Typography, useTheme, Container } from '@mui/material'
+import { Box, Card, CardContent, CircularProgress, Grid, Paper, Tooltip as MuiTooltip, Typography, useTheme, Container } from '@mui/material'
 
 export default function OurUsers() {
 
@@ -41,16 +41,49 @@ export default function OurUsers() {
 
         // Combine country and city for display
         return analyticsData.rows.map(row => ({
-            name: `${row.dimensionValues[0].value}, ${row.dimensionValues[1].value}`,
+            name: `${row.dimensionValues[1].value}`,
             value: parseInt(row.metricValues[0].value, 10),
-            country: row.dimensionValues[0].value,
             city: row.dimensionValues[1].value
         }));
     };
 
     const locationData = data ? prepareLocationData(data) : [];
 
+    // const locationData =  [
+    //     {
+    //         "name": "Dhaka",
+    //         "value": 1,
+    //         "city": "Dhaka"
+    //     },
+    //     {
+    //         "name": "Narsingdi",
+    //         "value": 2,
+    //         "city": "Narsingdi"
+    //     },
+    //     {
+    //         "name": "Dhaka",
+    //         "value": 3,
+    //         "city": "Dhaka"
+    //     },
+    //     {
+    //         "name": "Dhaka",
+    //         "value": 4,
+    //         "city": "Dhaka"
+    //     },
+    //     {
+    //         "name": "Dhaka",
+    //         "value": 4,
+    //         "city": "Dhaka"
+    //     },
+    //     {
+    //         "name": "Dhaka",
+    //         "value": 4,
+    //         "city": "Dhaka"
+    //     },
+    // ];
     // Animation variants
+    
+    console.log(locationData)
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -85,7 +118,7 @@ export default function OurUsers() {
                     }}
                 >
                     <Typography variant="subtitle2" color="textPrimary">
-                        {payload[0].payload.country}, {payload[0].payload.city}
+                        {payload[0].payload.city}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                         Active Users: {payload[0].value}
@@ -97,43 +130,43 @@ export default function OurUsers() {
     };
 
     const renderCustomLegend = () => (
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    mb: 2,
-                    gap: 1
-                }}
-            >
-                {locationData.map((entry, index) => (
+        <Box
+            sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                mb: 2,
+                gap: 1
+            }}
+        >
+            {locationData.map((entry, index) => (
+                <Box
+                    key={`legend-${index}`}
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        mx: 1,
+                        mb: 1
+                    }}
+                    component={m.div}
+                    whileHover={{ scale: 1.05 }}
+                >
                     <Box
-                        key={`legend-${index}`}
                         sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            mx: 1,
-                            mb: 1
+                            width: 12,
+                            height: 12,
+                            borderRadius: '50%',
+                            backgroundColor: COLORS[index % COLORS.length],
+                            mr: 1
                         }}
-                        component={m.div}
-                        whileHover={{ scale: 1.05 }}
-                    >
-                        <Box
-                            sx={{
-                                width: 12,
-                                height: 12,
-                                borderRadius: '50%',
-                                backgroundColor: COLORS[index % COLORS.length],
-                                mr: 1
-                            }}
-                        />
-                        <Typography variant="body2">
-                            {entry.country}, {entry.city} ({(entry.value / locationData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0)}%)
-                        </Typography>
-                    </Box>
-                ))}
-            </Box>
-        );
+                    />
+                    <Typography variant="body2">
+                        {entry.city} ({(entry.value / locationData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0)}%)
+                    </Typography>
+                </Box>
+            ))}
+        </Box>
+    );
 
     if (loading) {
         return (
@@ -185,18 +218,15 @@ export default function OurUsers() {
                                 <Grid item xs={12} md={6}>
                                     <m.div variants={itemVariants}>
                                         <Box height={300}>
-
                                             {renderCustomLegend()}
-
                                             <ResponsiveContainer width="100%" height="70%">
-                                                <PieChart>
+                                                <PieChart style={{ '.recharts-legend-wrapper': { display: 'none' } }}>
                                                     <Pie
                                                         data={locationData}
                                                         cx="50%"
                                                         cy="50%"
                                                         outerRadius={80}
                                                         innerRadius={40}
-                                                        fill="#8884d8"
                                                         paddingAngle={5}
                                                         dataKey="value"
                                                         labelLine={false}
@@ -210,45 +240,43 @@ export default function OurUsers() {
                                                             />
                                                         ))}
                                                     </Pie>
-                                                    <Tooltip content={<CustomTooltip />} />
-                                                    <Legend />
                                                 </PieChart>
                                             </ResponsiveContainer>
                                         </Box>
                                     </m.div>
                                 </Grid>
 
-                                {/* Stats Cards */}
+                                {/* Bar Chart */}
                                 <Grid item xs={12} md={6}>
-                                    <Box>
-                                        {locationData.map((location, index) => (
-                                            <m.div
-                                                key={`location-${index}`}
-                                                variants={itemVariants}
-                                                whileHover={{ scale: 1.03 }}
-                                                whileTap={{ scale: 0.98 }}
-                                            >
-                                                <Paper
-                                                    sx={{
-                                                        p: 2,
-                                                        mb: 2,
-                                                        borderLeft: `4px solid ${COLORS[index % COLORS.length]}`,
+                                    <m.div variants={itemVariants}>
+                                        <Box height={300}>
+                                            <ResponsiveContainer width="100%" height="100%">
+                                                <BarChart
+                                                    data={locationData}
+                                                    margin={{
+                                                        top: 20,
+                                                        right: 30,
+                                                        left: 20,
+                                                        bottom: 5,
                                                     }}
-                                                    elevation={2}
                                                 >
-                                                    <Typography variant="h6" component="h3">
-                                                        {location.country}
-                                                    </Typography>
-                                                    <Typography variant="body1">
-                                                        {location.city}
-                                                    </Typography>
-                                                    <Typography variant="h5" sx={{ mt: 1 }}>
-                                                        {location.value} <Typography component="span" variant="body2" color="textSecondary">active users</Typography>
-                                                    </Typography>
-                                                </Paper>
-                                            </m.div>
-                                        ))}
-                                    </Box>
+                                                    <CartesianGrid strokeDasharray="3 3" />
+                                                    <XAxis 
+                                                        dataKey="city" 
+                                                        tick={{ fontSize: 12 }}
+                                                        interval={0}
+                                                    />
+                                                    <YAxis />
+                                                    <Tooltip />
+                                                    <Bar 
+                                                        dataKey="value" 
+                                                        fill={theme.palette.primary.main}
+                                                        radius={[4, 4, 0, 0]}
+                                                    />
+                                                </BarChart>
+                                            </ResponsiveContainer>
+                                        </Box>
+                                    </m.div>
                                 </Grid>
                             </Grid>
                         </CardContent>

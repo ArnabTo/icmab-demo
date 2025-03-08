@@ -20,6 +20,9 @@ import { HomeIntegrations } from '../home-integrations';
 import { HomeAdvertisement } from '../home-advertisement';
 import { HomeHugePackElements } from '../home-hugepack-elements';
 import { HomeHighlightFeatures } from '../home-highlight-features';
+import HomeOurSuccessStories from '../home-our-success';
+import HomeQuote from '../home-quote';
+import ExploreCMA from '../home-explore-cma';
 
 // ----------------------------------------------------------------------
 
@@ -45,7 +48,7 @@ export function HomeView() {
         <HomeLanding/>
         {/* <HomeProgramsEvents/> */}
 
-        <OurUsers/>
+        {/* <OurUsers/> */}
 
         <HomeGridGallery/>
         
@@ -53,23 +56,29 @@ export function HomeView() {
 
         <HomeMinimal />
 
-        <HomeHugePackElements />
+        <HomeOurSuccessStories/>
 
-        <HomeForDesigner />
+        <HomeQuote/>
 
-        <HomeHighlightFeatures />
+        <ExploreCMA/>
+        
+        {/* <HomeHugePackElements /> */}
 
-        <HomeIntegrations />
+        {/* <HomeForDesigner /> */}
 
-        <HomePricing />
+        {/* <HomeHighlightFeatures /> */}
 
-        <HomeTestimonials />
+        {/* <HomeIntegrations /> */}
+
+        {/* <HomePricing /> */}
+
+        {/* <HomeTestimonials /> */}
 
         <HomeFAQs />
 
-        <HomeZoneUI />
+        {/* <HomeZoneUI /> */}
 
-        <HomeAdvertisement />
+        {/* <HomeAdvertisement /> */}
       </Stack>
     </>
   );

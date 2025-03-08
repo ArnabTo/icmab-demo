@@ -5,12 +5,24 @@ import Typography from '@mui/material/Typography';
 import { Box, Tab, Grid, Card, Paper, Button, useTheme, Container, CardMedia } from '@mui/material'
 
 import { Iconify } from 'src/components/iconify';
+import { MotionViewport } from 'src/components/animate';
+
+import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 
 export default function HomeTabComponent() {
   const [value, setValue] = React.useState(0);
 
   const theme = useTheme();
-  console.log(theme)
+
+  const renderLines = (
+    <>
+      <FloatPlusIcon sx={{ top: 72, left: 72 }} />
+      <FloatPlusIcon sx={{ bottom: 72, left: 72 }} />
+      <FloatLine sx={{ top: 80, left: 0 }} />
+      <FloatLine sx={{ bottom: 80, left: 0 }} />
+      <FloatLine vertical sx={{ top: 0, left: 80 }} />
+    </>
+  );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -100,6 +112,41 @@ export default function HomeTabComponent() {
   // New tab structure with three tabs
   const tabsData = [
     {
+      label: 'Become a CMA',
+      icon: 'duo-icons:certificate',
+      content: (
+        <Grid container spacing={3}>
+          {/* Left Column */}
+          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {/* Rows 2-4 (Spanning 3 Rows) - Blog Post */}
+            <Grid item sx={{ flexGrow: 1 }}>
+              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-07-at-12.16.27-AM.jpeg" title="10 Study Tips Every CMA Student Should Know" />
+            </Grid>
+
+            {/* Row 1 - Two Boxes in Flex */}
+            <Box sx={{ display: "flex", gap: 3 }}>
+              <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
+              <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
+            </Box>
+          </Grid>
+
+          {/* Right Column */}
+          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {/* Row 4 - Two Boxes in Flex */}
+            <Box sx={{ display: "flex", gap: 3 }}>
+              <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
+              <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
+            </Box>
+
+            {/* Rows 1-3 (Spanning 3 Rows) - Blog Post */}
+            <Grid item sx={{ flexGrow: 1 }}>
+              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/IMG_1810-scaled.jpg" title="Top Study Hacks for CMA Students" />
+            </Grid>
+          </Grid>
+        </Grid>
+      )
+    },
+    {
       label: 'Students',
       icon: 'hugeicons:students',
       content: (
@@ -135,36 +182,36 @@ export default function HomeTabComponent() {
       )
     },
     {
-      label: 'Become a CMA',
-      icon: 'duo-icons:certificate',
+      label: 'Associate Members',
+      icon: 'hugeicons:students',
       content: (
         <Grid container spacing={3}>
           {/* Left Column */}
           <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-               {/* Rows 2-4 (Spanning 3 Rows) - Blog Post */}
-               <Grid item sx={{ flexGrow: 1 }}>
-              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-07-at-12.16.27-AM.jpeg" title="10 Study Tips Every CMA Student Should Know" />
-            </Grid>
-           
             {/* Row 1 - Two Boxes in Flex */}
             <Box sx={{ display: "flex", gap: 3 }}>
               <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
               <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
             </Box>
+
+            {/* Rows 2-4 (Spanning 3 Rows) - Blog Post */}
+            <Grid item sx={{ flexGrow: 1 }}>
+              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-07-at-12.16.27-AM.jpeg" title="10 Study Tips Every CMA Student Should Know" />
+            </Grid>
           </Grid>
 
           {/* Right Column */}
           <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {/* Rows 1-3 (Spanning 3 Rows) - Blog Post */}
+            <Grid item sx={{ flexGrow: 1 }}>
+              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/IMG_1810-scaled.jpg" title="Top Study Hacks for CMA Students" />
+            </Grid>
+
             {/* Row 4 - Two Boxes in Flex */}
             <Box sx={{ display: "flex", gap: 3 }}>
               <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
               <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
             </Box>
-
-            {/* Rows 1-3 (Spanning 3 Rows) - Blog Post */}
-            <Grid item sx={{ flexGrow: 1 }}>
-              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/IMG_1810-scaled.jpg" title="Top Study Hacks for CMA Students" />
-            </Grid>
           </Grid>
         </Grid>
       )
@@ -174,29 +221,29 @@ export default function HomeTabComponent() {
       icon: 'solar:buildings-outline',
       content: (
         <Grid container spacing={3}>
-        {/* Left Column */}
-        <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-             {/* Rows 2-4 (Spanning 3 Rows) - Blog Post */}
-             <Grid item sx={{ flexGrow: 1 }}>
-            <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-07-at-12.16.27-AM.jpeg" title="10 Study Tips Every CMA Student Should Know" />
+          {/* Left Column */}
+          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {/* Rows 2-4 (Spanning 3 Rows) - Blog Post */}
+            <Grid item sx={{ flexGrow: 1 }}>
+              <BlogPost image="https://icmab.gov.bd/wp-content/uploads/2025/03/WhatsApp-Image-2025-03-07-at-12.16.27-AM.jpeg" title="10 Study Tips Every CMA Student Should Know" />
+            </Grid>
+          </Grid>
+
+          {/* Right Column */}
+          <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+            {/* Row 4 - Two Boxes in Flex */}
+            <Box sx={{ display: "flex", gap: 3 }}>
+              <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
+              <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
+            </Box>
+            {/* Row 1 - Two Boxes in Flex */}
+            <Box sx={{ display: "flex", gap: 3 }}>
+              <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
+              <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
+            </Box>
+
           </Grid>
         </Grid>
-
-        {/* Right Column */}
-        <Grid item xs={12} md={6} sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          {/* Row 4 - Two Boxes in Flex */}
-          <Box sx={{ display: "flex", gap: 3 }}>
-            <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
-            <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
-          </Box>
-         {/* Row 1 - Two Boxes in Flex */}
-         <Box sx={{ display: "flex", gap: 3 }}>
-            <ContentLink title="Scholarship Programs" bgColor={theme.palette.mode === 'dark' ? theme.palette.grey[400] : theme.palette.secondary.main} />
-            <ContentLink title="Cost and Management Accountants Act-2018 (Authentic English Text)" bgColor={theme.palette.mode === 'dark' ? theme.palette.secondary.main : theme.palette.grey[400]} />
-          </Box>
-
-        </Grid>
-      </Grid>
       )
     }
   ];
@@ -204,29 +251,33 @@ export default function HomeTabComponent() {
 
 
   return (
-    <Box sx={{ py: 10 }}>
-      <Container>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="fullWidth"
-          sx={{ mb: 3 }}
-        >
-          {tabsData.map((tab, index) => (
-            <Tab
-              key={index}
-              label={tab.label}
-              iconPosition="top"
-              icon={<Iconify icon={tab.icon} width={24} />}
-            />
-          ))}
-        </Tabs>
+    <Box component="section" sx={{ py: 10 }}>
+      <MotionViewport>
+        {renderLines}
 
-        {/* Tab content */}
-        <Box sx={{ mt: 2 }}>
-          {tabsData[value].content}
-        </Box>
-      </Container>
+        <Container sx={{ position: 'relative', alignItems: 'center' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            sx={{ mb: 3 }}
+          >
+            {tabsData.map((tab, index) => (
+              <Tab
+                key={index}
+                label={tab.label}
+                iconPosition="top"
+                icon={<Iconify icon={tab.icon} width={24} />}
+              />
+            ))}
+          </Tabs>
+
+          {/* Tab content */}
+          <Box sx={{ mt: 2 }}>
+            {tabsData[value].content}
+          </Box>
+        </Container>
+      </MotionViewport>
     </Box>
   )
 }
