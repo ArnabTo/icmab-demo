@@ -244,11 +244,11 @@ export function HomeMinimal({ sx, ...other }) {
                           '& .apexcharts-canvas': {
                             bgcolor: 'background.default',
                             borderRadius: 2,
-                            boxShadow: (theme) =>
-                              `-40px 40px 80px 0px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.16)}`,
+                            boxShadow: (localTheme) =>
+                              `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.grey['500Channel'], 0.16)}`,
                             [stylesMode.dark]: {
-                              boxShadow: (theme) =>
-                                `-40px 40px 80px 0px ${varAlpha(theme.vars.palette.common.blackChannel, 0.16)}`,
+                              boxShadow: (localTheme) =>
+                                `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.common.blackChannel, 0.16)}`,
                             },
                           },
                         }}

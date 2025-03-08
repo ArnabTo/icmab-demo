@@ -1,17 +1,19 @@
 import { m } from 'framer-motion';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import {  useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import { alpha, useTheme } from '@mui/material/styles';
 
-import { bgGradient, stylesMode, varAlpha } from 'src/theme/styles';
-import { AnimateBorder, MotionViewport } from 'src/components/animate';
+import { varAlpha, stylesMode } from 'src/theme/styles';
+
+import { MotionViewport } from 'src/components/animate';
 import {
     Carousel,
     useCarousel,
     CarouselDotButtons,
-    CarouselArrowBasicButtons,
 } from 'src/components/carousel';
+
 import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 
 // ----------------------------------------------------------------------
@@ -83,12 +85,12 @@ export default function HomeQuote() {
                             textAlign: 'center',
                             bgcolor: 'background.default',
                             borderRadius: 2,
-                            // boxShadow: (theme) =>
-                            //     `-40px 40px 80px 0px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.16)}`,
-                            // [stylesMode.dark]: {
-                            //     boxShadow: (theme) =>
-                            //         `-40px 40px 80px 0px ${varAlpha(theme.vars.palette.common.blackChannel, 0.16)}`,
-                            // },
+                            boxShadow: (lightTheme) =>
+                                `-40px 40px 80px 0px ${varAlpha(lightTheme.vars.palette.grey['500Channel'], 0.16)}`,
+                            [stylesMode.dark]: {
+                                boxShadow: (darkTheme) =>
+                                    `-40px 40px 80px 0px ${varAlpha(darkTheme.vars.palette.common.blackChannel, 0.16)}`,
+                            },
                         }}
                     >
                         <Carousel carousel={carousel}>
@@ -124,10 +126,10 @@ function CarouselItem({ item, selected }) {
             sx={{
                 opacity: 0,
                 width: '100%',
-                transition: (theme) =>
-                    theme.transitions.create('opacity', {
-                        easing: theme.transitions.easing.easeInOut,
-                        duration: theme.transitions.duration.short,
+                transition: (transitionTheme) =>
+                    transitionTheme.transitions.create('opacity', {
+                        easing: transitionTheme.transitions.easing.easeInOut,
+                        duration: transitionTheme.transitions.duration.short,
                     }),
                 ...(selected && {
                     opacity: 1,

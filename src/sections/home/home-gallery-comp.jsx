@@ -1,9 +1,12 @@
 import React from 'react';
 import { domAnimation, LazyMotion, m } from 'framer-motion';
+
 import { Box, Typography, Grid, useTheme, useMediaQuery, Container } from '@mui/material';
-import { FloatLine, FloatPlusIcon } from './components/svg-elements';
+
 import { MotionViewport } from 'src/components/animate';
+
 import { SectionTitle } from './components/section-title';
+import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 
 export default function HomeGridGallery() {
   const theme = useTheme();

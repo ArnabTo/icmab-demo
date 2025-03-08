@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 import { m, useInView } from "framer-motion";
 
 import { useTheme } from "@mui/material/styles";
-import { Box, Button, Container, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 import { CONFIG } from "src/config-global";
+
 import { FloatLine, FloatPlusIcon } from "./components/svg-elements";
-import { MotionViewport } from "src/components/animate";
+
 
 export default function HomeLanding() {
     const theme = useTheme();

@@ -27,6 +27,8 @@ module.exports = {
    * 2 ~ 'error'
    */
   rules: {
+    'react/no-unescaped-entities': 'off',
+    '@next/next/no-page-custom-font': 'off',
     'no-use-before-define': 0,
     'no-alert': 0,
     camelcase: 0,
@@ -38,6 +40,7 @@ module.exports = {
     'no-restricted-exports': 0,
     'no-promise-executor-return': 0,
     'import/prefer-default-export': 0,
+    'unused-imports/no-unused-imports': 0,
     'prefer-destructuring': [1, { object: true, array: false }],
     // react
     'react/prop-types': 0,
