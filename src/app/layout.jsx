@@ -53,6 +53,19 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang={lang ?? 'en'} suppressHydrationWarning>
+      <head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRY9WVRV5"></Script>
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EMRY9WVRV5');
+      `,
+          }}
+        />
+      </head>
       <body>
         <InitColorSchemeScript
           defaultMode={schemeConfig.defaultMode}
@@ -60,7 +73,7 @@ export default async function RootLayout({ children }) {
         />
 
         <I18nProvider lang={CONFIG.isStaticExport ? undefined : lang}>
-        <LocalizationProvider>
+          <LocalizationProvider>
             <AuthProvider>
               <SettingsProvider settings={defaultSettings}>
                 <ThemeProvider>
@@ -78,7 +91,7 @@ export default async function RootLayout({ children }) {
           </LocalizationProvider>
         </I18nProvider>
       </body>
-      <GoogleAnalytics gaId="G-481156122"/>
+      {/* <GoogleAnalytics gaId="G-481156122" /> */}
     </html>
   );
 }
