@@ -17,8 +17,6 @@ import HomeTabComponent from '../home-tab-component';
 import { HomeForDesigner } from '../home-for-designer';
 import { HomeTestimonials } from '../home-testimonials';
 import { HomeIntegrations } from '../home-integrations';
-import HomeLandingSection from '../home-landing-section';
-import HomeProgramsEvents from '../home-programs-events';
 import { HomeAdvertisement } from '../home-advertisement';
 import { HomeHugePackElements } from '../home-hugepack-elements';
 import { HomeHighlightFeatures } from '../home-highlight-features';

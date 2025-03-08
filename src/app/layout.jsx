@@ -1,5 +1,8 @@
 import 'src/global.css';
+
 import Script from 'next/script';
+// import { GoogleAnalytics } from '@next/third-parties/google'
+
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 
 import { CONFIG } from 'src/config-global';
@@ -22,8 +25,6 @@ import { AuthProvider as Auth0AuthProvider } from 'src/auth/context/auth0';
 import { AuthProvider as AmplifyAuthProvider } from 'src/auth/context/amplify';
 import { AuthProvider as SupabaseAuthProvider } from 'src/auth/context/supabase';
 import { AuthProvider as FirebaseAuthProvider } from 'src/auth/context/firebase';
-
-import { GoogleAnalytics } from '@next/third-parties/google'
 // ----------------------------------------------------------------------
 
 const AuthProvider =
@@ -54,7 +55,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={lang ?? 'en'} suppressHydrationWarning>
       <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRY9WVRV5"></Script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRY9WVRV5"/>
         <Script
           dangerouslySetInnerHTML={{
             __html: `

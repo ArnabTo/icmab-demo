@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { m, useInView } from "framer-motion";
+
+import { useTheme } from "@mui/material/styles";
+import { Box, Button, Typography } from "@mui/material";
+
 import { CONFIG } from "src/config-global";
 
 export default function HomeLanding() {
