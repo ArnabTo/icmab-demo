@@ -2,9 +2,11 @@ import React, { useRef } from "react";
 import { m, useInView } from "framer-motion";
 
 import { useTheme } from "@mui/material/styles";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Container, Typography } from "@mui/material";
 
 import { CONFIG } from "src/config-global";
+
+import { MotionViewport } from "src/components/animate";
 
 import { FloatLine, FloatPlusIcon } from "./components/svg-elements";
 
@@ -28,7 +30,6 @@ export default function HomeLanding() {
 
     return (
         <Box
-            component="section"
             ref={ref}
             sx={{
                 py: { xs: 10, md: 15 },
@@ -41,85 +42,91 @@ export default function HomeLanding() {
                 overflow: "hidden",
             }}
         >
-            {/* Left Side - Text */}
-            <Box
-                sx={{
-                    width: "100%",
-                    height:"100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", 
-                    zIndex:5
-                  }}
-            >
-                <m.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{ width: "100%", height:'100%' }}
-                >
+            <MotionViewport>
+                <Container sx={{ display: 'flex' }}>
+                {renderLines}
+                    {/* Left Side - Text */}
                     <Box
                         sx={{
-                            background: theme.palette.secondary.main,
-                            opacity: 0.9,
-                            padding: theme.spacing(3),
-                            height:"100%"
+                            width: "100%",
+                            // height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            zIndex: 5
                         }}
                     >
-                        <Typography variant="h3" color="common.white">
-                            Welcome to ICMAB
-                        </Typography>
-                        <Typography variant="h3" color="common.white">
-                            Enter into Lifetime profession with CMA Certificate.
-                        </Typography>
-                        <Typography variant="body1" color="common.white">
-                            Enter into Lifetime profession with CMA Certificate.
-                        </Typography>
+                        <m.div
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            style={{ width: "100%", height: '100%' }}
+                        >
+                            <Box
+                                sx={{
+                                    background: theme.palette.secondary.main,
+                                    opacity: 0.9,
+                                    padding: theme.spacing(3),
+                                    height: "100%"
+                                }}
+                            >
+                                <Typography variant="h3" color="common.white">
+                                    Welcome to ICMAB
+                                </Typography>
+                                <Typography variant="h3" color="common.white">
+                                    Enter into Lifetime profession with CMA Certificate.
+                                </Typography>
+                                <Typography variant="body1" color="common.white">
+                                    Enter into Lifetime profession with CMA Certificate.
+                                </Typography>
 
-                        <Button variant="outlined" sx={{ backgroundColor: "common.white", mt: 3 }}>
-                            Get Started
-                        </Button>
+                                <Button
+                                    variant="contained"
+                                    sx={{
+                                        backgroundColor: theme.palette.common.white,
+                                        color: theme.palette.common.black,
+                                        mt: 3
+                                    }}
+                                >
+                                    Get Started
+                                </Button>
+                            </Box>
+                        </m.div>
                     </Box>
-                </m.div>
-            </Box>
 
-            {/* Right Side - Video */}
-            <Box
-                sx={{
-                    width: "100%",
-                    height:"100%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", // Aligns with left side
-                }}
-            >
-                <m.video
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    style={{
-                        width: "100%",
-                        height: "100%", // Adjusts height to match left box
-                        maxHeight: "100%", // Prevents overflow
-                        objectFit: "cover",
-                        zIndex: 1,
-                    }}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    crossOrigin="anonymous"
-                >
-                    <source src={`${CONFIG.assetsDir}/assets/background/video.mp4`} type="video/mp4" />
-                    Your browser does not support the video tag.
-                </m.video>
-            </Box>
-            {/* <MotionViewport>
-                {renderLines}
-                <Container sx={{display:'flex'}}>
-         
+                    {/* Right Side - Video */}
+                    <Box
+                        sx={{
+                            width: "100%",
+                            height: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center", // Aligns with left side
+                        }}
+                    >
+                        <m.video
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            style={{
+                                width: "100%",
+                                height: "100%", // Adjusts height to match left box
+                                maxHeight: "100%", // Prevents overflow
+                                objectFit: "cover",
+                                zIndex: 1,
+                            }}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            crossOrigin="anonymous"
+                        >
+                            <source src={`${CONFIG.assetsDir}/assets/background/video.mp4`} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </m.video>
+                    </Box>
                 </Container>
-            </MotionViewport> */}
+            </MotionViewport>
         </Box>
     );
 }

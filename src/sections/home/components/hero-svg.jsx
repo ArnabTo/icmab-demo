@@ -243,9 +243,9 @@ export function Texts({ sx, ...other }) {
           y="12px"
           dominantBaseline="hanging"
           animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 64, ease: 'linear', repeat: Infinity }}
+          transition={{ duration: 100, ease: 'linear', repeat: Infinity }}
         >
-          Minimal Design System Minimal Design System
+          Set The Standard Which way you will go
         </m.text>
       </Box>
     </Box>
