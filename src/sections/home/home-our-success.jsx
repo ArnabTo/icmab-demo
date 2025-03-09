@@ -86,7 +86,7 @@ export default function HomeOurSuccessStories() {
                 <MotionViewport>
                     {renderLines}
 
-                    <Container>
+                    <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
                         <SectionTitle
                             caption="Success"
                             title="Our Success"

@@ -43,7 +43,7 @@ export default function HomeLanding() {
             }}
         >
             <MotionViewport>
-                <Container sx={{ display: 'flex' }}>
+                <Box sx={{ display: 'flex', marginLeft:'9%' }}>
                 {renderLines}
                     {/* Left Side - Text */}
                     <Box
@@ -67,7 +67,9 @@ export default function HomeLanding() {
                                     background: theme.palette.secondary.main,
                                     opacity: 0.9,
                                     padding: theme.spacing(3),
-                                    height: "100%"
+                                    height: "100%",
+                                    borderTopLeftRadius: theme.shape.borderRadius,
+                                    borderBottomLeftRadius: theme.shape.borderRadius,
                                 }}
                             >
                                 <Typography variant="h3" color="common.white">
@@ -125,7 +127,7 @@ export default function HomeLanding() {
                             Your browser does not support the video tag.
                         </m.video>
                     </Box>
-                </Container>
+                </Box>
             </MotionViewport>
         </Box>
     );

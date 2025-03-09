@@ -54,7 +54,7 @@ export function Footer({ layoutQuery, sx }) {
 
   return (
     <Box component="footer" sx={{ position: 'relative', bgcolor: 'background.default', ...sx }}>
-      <Divider />
+      {/* <Divider /> */}
       <Container
         sx={{
           pb: 5,

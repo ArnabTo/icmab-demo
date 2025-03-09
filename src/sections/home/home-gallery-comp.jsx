@@ -195,7 +195,7 @@ export default function HomeGridGallery() {
       <MotionViewport>
         {renderLines}
 
-        <Container sx={{ position: 'relative', alignItems: 'center' }}>
+        <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
           <SectionTitle
             caption="Stories"
             title="Our"

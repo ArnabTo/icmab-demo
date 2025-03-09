@@ -65,7 +65,7 @@ export default function ExploreCMA() {
             <MotionViewport>
                 {renderLines}
 
-                <Container>
+               <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
                     <SectionTitle
                         caption="Exploration"
                         title="Explore"
@@ -77,7 +77,7 @@ export default function ExploreCMA() {
                             <Grid key={post.id} item xs={12} md={6} lg={4}>
                                 <Card sx={{ borderRadius: 2, boxShadow: 3, position: 'relative' }}>
                                     {post.image && 
-                                    <Image src={post.image} alt="Post Image" style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover' }} />
+                                <Image src={post.image} alt="Post Image" style={{ width: '100%', height: 'auto', maxHeight: '200px', objectFit: 'cover' }} />
                                     }
                                     <CardContent>
                                         <Typography variant="h6" sx={{ fontWeight: 'bold', mb: 2, color: theme.palette.mode === 'dark' ? 'common.white' : '#34495e' }}>

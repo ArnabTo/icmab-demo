@@ -78,7 +78,7 @@ export function HomeView() {
 
         {/* <HomeZoneUI /> */}
 
-        {/* <HomeAdvertisement /> */}
+        <HomeAdvertisement />
       </Stack>
     </>
   );

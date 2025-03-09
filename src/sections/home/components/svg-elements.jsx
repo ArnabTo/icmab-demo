@@ -12,9 +12,9 @@ const baseStyles = {
   display: 'none',
   color: 'grey.500',
   position: 'absolute',
-  '& line': { strokeDasharray: 3, stroke: 'currentColor' },
+  '& line': { strokeDasharray: 4, stroke: 'currentColor' },
   '& path': { fill: 'currentColor', stroke: 'currentColor' },
-  '@media (min-width: 1440px)': { display: 'block' },
+  '@media (min-width: 1360px)': { display: 'block' },
 };
 
 const transition = { duration: 0.64, ease: [0.43, 0.13, 0.23, 0.96] };

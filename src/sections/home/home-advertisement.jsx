@@ -1,4 +1,5 @@
 import { m } from 'framer-motion';
+import { useTheme } from '@emotion/react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -19,6 +20,7 @@ import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 // ----------------------------------------------------------------------
 
 export function HomeAdvertisement({ sx, ...other }) {
+  const theme = useTheme();
   const renderLines = (
     <>
       <FloatPlusIcon sx={{ left: 72, top: '50%', mt: -1 }} />
@@ -35,13 +37,13 @@ export function HomeAdvertisement({ sx, ...other }) {
         sx={{ m: 0, color: 'common.white', typography: { xs: 'h2', md: 'h1' } }}
       >
         Get started with
-        <br /> Minimal kit
+        <br /> ICMAB
         <Box
           component="span"
-          sx={(theme) => ({
+          sx={(localTheme) => ({
             ...textGradient(
-              `to right, ${theme.vars.palette.common.white}, ${varAlpha(
-                theme.vars.palette.common.whiteChannel,
+              `to right, ${localTheme.vars.palette.common.white}, ${varAlpha(
+                localTheme.vars.palette.common.whiteChannel,
                 0.4
               )}`
             ),
@@ -60,14 +62,17 @@ export function HomeAdvertisement({ sx, ...other }) {
       >
         <m.div variants={varFade({ distance: 24 }).inRight}>
           <Button
-            color="primary"
+            sx={{
+                  backgroundColor: theme.palette.common.white,
+                  color: theme.palette.common.black,
+              }}
             size="large"
             variant="contained"
             target="_blank"
             rel="noopener"
             href={paths.minimalStore}
           >
-            Purchase now
+            Contact us
           </Button>
         </m.div>
 
@@ -86,7 +91,7 @@ export function HomeAdvertisement({ sx, ...other }) {
               '&:hover': { borderColor: 'currentColor' },
             }}
           >
-            Get free version
+            Learn more
           </Button>
         </m.div>
       </Stack>
@@ -158,7 +163,7 @@ export function HomeAdvertisement({ sx, ...other }) {
               bgcolor: 'grey.900',
               position: 'relative',
               textAlign: { xs: 'center', md: 'left' },
-              border: (theme) => `solid 1px ${theme.vars.palette.grey[800]}`,
+              border: (borderTheme) => `solid 1px ${borderTheme.vars.palette.grey[800]}`,
             }}
           >
             {renderImg}

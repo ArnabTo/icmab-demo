@@ -221,7 +221,7 @@ export function HomeMinimal({ sx, ...other }) {
       <MotionViewport>
         {renderLines}
 
-        <Container sx={{ position: 'relative', alignItems: 'center' }}>
+        <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
           <Grid container columnSpacing={{ xs: 0, md: 8 }} sx={{ position: 'relative', zIndex: 9, alignItems: 'center' }}>
             <Grid xs={12} md={6} lg={7}>
               {renderDescription}
