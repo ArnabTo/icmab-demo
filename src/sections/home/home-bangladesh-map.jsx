@@ -66,7 +66,7 @@ export default function HomeBangladeshMap() {
     <Box
       sx={{
         position: 'relative',
-        backgroundImage: 'url(/assets/background/background-3-blur.webp)',
+        backgroundImage: 'url(/assets/background/background-4.jpg)',
         backgroundSize: 'cover',
         height: '100vh',
         backgroundPosition: 'center',
@@ -77,7 +77,6 @@ export default function HomeBangladeshMap() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.7)',
           zIndex: 1,
         },
       }}
@@ -138,7 +137,7 @@ export default function HomeBangladeshMap() {
                     color: [theme.vars.palette.common.white, theme.vars.palette.common.white],
                     outline: `135deg, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}`,
                   }}
-                  sx={{ width: '15%', height: 1, position: 'absolute' }}
+                  sx={{ width: '17%', height: 1, position: 'absolute' }}
                 />
 
                 <Button
@@ -148,7 +147,7 @@ export default function HomeBangladeshMap() {
                   rel="noopener"
                   href={paths.components}
                   endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
-                  sx={{ px: 2, color: 'common.white'}}
+                  sx={{ px: 2, color: 'common.white' }}
                 >
                   Get Started
                 </Button>

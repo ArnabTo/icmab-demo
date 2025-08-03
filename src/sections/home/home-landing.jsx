@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import { ReactTyped } from 'react-typed';
 import { m, useInView } from 'framer-motion';
 
 import { useTheme } from '@mui/material/styles';
@@ -16,7 +17,6 @@ export default function HomeLanding() {
   const theme = useTheme();
   const ref = useRef(null);
 
-  // Detect when section is 10% visible
   const isInView = useInView(ref, { amount: 0.1, once: true });
 
   return (
@@ -33,7 +33,7 @@ export default function HomeLanding() {
       }}
     >
       <MotionViewport>
-        <Box sx={{ display: 'flex', height: '100vh', width: '100%', }}>
+        <Box sx={{ display: 'flex', height: '100vh', width: '100%' }}>
           {/* Left Side - Text */}
           <Box
             sx={{
@@ -71,7 +71,7 @@ export default function HomeLanding() {
                 sx={{
                   background: theme.palette.blue.main,
                   opacity: 0.9,
-                  padding: theme.spacing(7),
+                  padding: theme.spacing(10),
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -80,11 +80,24 @@ export default function HomeLanding() {
                 }}
               >
                 <Typography variant="h3">
-                  Welcome to ICMAB
+                  Institute of Cost and Management Accountants of Bangladesh (ICMAB)
                 </Typography>
-                <Typography variant="subtitle1" mt={2} mb={4}>
-                  Enter into Lifetime profession with CMA Certificate.
-                </Typography>
+                <Box mt={2} mb={4} sx={{ width: '100%' }}>
+                  <ReactTyped
+                    strings={[
+                      'ICMAB is the national professional body of Cost and Management Accountants in Bangladesh.',
+                      'Dedicated to promoting and regulating the profession.',
+                      'Playing a vital role in industrial and economic development.',
+                      'Producing highly qualified accountants who provide leadership.',
+                      'Helping businesses achieve greater efficiency and competitiveness.',
+                      'Expertise in effective cost management strategies.',
+                    ]}
+                    typeSpeed={40}
+                    backSpeed={20}
+                    loop
+                    style={{ fontSize: '1.2rem', color: theme.palette.common.white }}
+                  />
+                </Box>
 
                 <Box
                   component={m.div}

@@ -7,6 +7,7 @@ import HomeQuote from './home-quote';
 import HomeLanding from './home-landing';
 import { HomeMinimal } from './home-minimal';
 import HomeGridGallery from './home-gallery-comp';
+import HomeTabComponent from './home-tab-component';
 import HomeBangladeshMap from './home-bangladesh-map';
 
 const GridPattern = styled('div')({
@@ -72,6 +73,24 @@ export default function SmoothScroll() {
           }}
         >
           <HomeBangladeshMap />
+        </Box>
+
+        <Box
+          component="section"
+          sx={{
+            bgcolor: 'background.default',
+            color: 'black',
+            display: 'grid',
+            placeContent: 'center',
+            height: '100vh',
+            position: 'sticky',
+            top: 0,
+            borderTopLeftRadius: '1rem',
+            borderTopRightRadius: '1rem',
+            overflow: 'hidden',
+          }}
+        >
+          <HomeTabComponent />
         </Box>
 
         <Box

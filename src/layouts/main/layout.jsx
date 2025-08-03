@@ -12,6 +12,7 @@ import { Logo } from 'src/components/logo';
 
 import { Main } from './main';
 import { NavMobile } from './nav/mobile';
+import { NavDesktop } from './nav/desktop';
 import { Footer, HomeFooter } from './footer';
 import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';
@@ -42,7 +43,7 @@ export function MainLayout({ sx, data, children, header }) {
        *************************************** */
       headerSection={
         <HeaderSection
-          // layoutQuery={layoutQuery}
+          layoutQuery={layoutQuery}
           sx={header?.sx}
           slots={{
             topArea: (
@@ -73,25 +74,18 @@ export function MainLayout({ sx, data, children, header }) {
             rightArea: (
               <>
                 {/* -- Nav desktop -- */}
-                <NavMobile
+                <NavDesktop
                   data={navData}
-                  open={mobileNavOpen.value}
-                  onClose={mobileNavOpen.onFalse}
+                  sx={{
+                    display: 'none',
+                    [theme.breakpoints.up(layoutQuery)]: { mr: 2.5, display: 'flex' },
+                  }}
                 />
                 <Box display="flex" alignItems="center" gap={{ xs: 1, sm: 1.5 }}>
-                  {/* -- Sign in button -- */}
-                  <SignInButton />
                   {/* -- Settings button -- */}
                   <SettingsButton />
-                  {/* -- Menu Open/Close button -- */}
-                  <MenuButton
-                    onClick={mobileNavOpen.onTrue}
-                    sx={{
-                      mr: 1,
-                      ml: -1,
-                      width: 40,
-                    }}
-                  />
+                  {/* -- Sign in button -- */}
+                  <SignInButton />
                 </Box>
               </>
             ),

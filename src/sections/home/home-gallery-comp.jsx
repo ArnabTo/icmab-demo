@@ -227,7 +227,7 @@ export default function HomeGridGallery() {
                     width: '100%',
                     gap: 1,
                     height: '80vh',
-                    mx: 0.5
+                    mx: 0.5,
                   }}
                 >
                   {/* First Row */}

@@ -6,12 +6,14 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
+import { Avatar, AvatarGroup, avatarClasses } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
+import { _mock } from 'src/_mock';
 import { varAlpha, textGradient } from 'src/theme/styles';
 
 import { Iconify } from 'src/components/iconify';
@@ -21,6 +23,7 @@ import { HeroBackground } from './components/hero-background';
 
 // ----------------------------------------------------------------------
 
+const lgKey = 'lg';
 const mdKey = 'md';
 
 export function HomeHero({ sx, ...other }) {
@@ -55,19 +58,16 @@ export function HomeHero({ sx, ...other }) {
           ...theme.typography.h2,
           my: 0,
           mx: 'auto',
-          maxWidth: 1080,
-          color: theme.palette.common.white,
+          maxWidth: 960,
+          color: 'common.white',
           fontFamily: theme.typography.fontSecondaryFamily,
-          fontSize: { xs: 36, sm: 48, md: 56, lg: 72 },
-          lineHeight: { xs: '54px', sm: '72px', md: '84px', lg: '90px' },
+          [theme.breakpoints.up(lgKey)]: { fontSize: { xs: 36, sm: 54 }, lineHeight: '72px' },
         }}
       >
         Creating the competitive edge for your
         <Box
           component={m.span}
-          animate={{
-            backgroundPosition: '200% center',
-          }}
+          animate={{ backgroundPosition: '200% center' }}
           transition={{
             duration: 20,
             ease: 'linear',
@@ -76,30 +76,38 @@ export function HomeHero({ sx, ...other }) {
           }}
           sx={{
             ...textGradient(
-              `300deg, ${theme.vars.palette.info.main} 0%, ${theme.vars.palette.secondary.main} 25%, ${theme.vars.palette.info.main} 50%, ${theme.vars.palette.secondary.main} 75%, ${theme.vars.palette.primary.main} 100%`
+              `120deg, ${theme.vars.palette.blue.darker} 0%, ${theme.vars.palette.blue.lighter} 25%, ${theme.vars.palette.blue.main} 50%, ${theme.vars.palette.blue.dark} 75%, ${theme.vars.palette.blue.light} 100%`
             ),
             backgroundSize: '400%',
             ml: { xs: 0.75, md: 1, xl: 1.5 },
-            position: 'relative',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background:
-                'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)',
-              animation: 'shimmer 3s infinite',
-              '@keyframes shimmer': {
-                '0%': { transform: 'translateX(-100%)' },
-                '100%': { transform: 'translateX(100%)' },
-              },
-            },
           }}
         >
           Business and Accounting Profession
         </Box>
+      </Box>
+    </AnimatedDiv>
+  );
+
+  const renderRatings = (
+    <AnimatedDiv>
+      <Box
+        gap={1.5}
+        display="flex"
+        flexWrap="wrap"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ typography: 'subtitle2', color: 'common.white' }}
+      >
+        <AvatarGroup sx={{ [`& .${avatarClasses.root}`]: { width: 32, height: 32 } }}>
+          {[...Array(3)].map((_, index) => (
+            <Avatar
+              key={_mock.fullName(index + 1)}
+              alt={_mock.fullName(index + 1)}
+              src={_mock.image.avatar(index + 1)}
+            />
+          ))}
+        </AvatarGroup>
+        16000+ Happy customers
       </Box>
     </AnimatedDiv>
   );
@@ -119,12 +127,13 @@ export function HomeHero({ sx, ...other }) {
                 px: 4,
                 py: 1.5,
                 borderRadius: 3,
-                background: `linear-gradient(135deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.secondary.main} 100%)`,
+                background: `linear-gradient(135deg, ${theme.vars.palette.blue.main} 0%, ${theme.vars.palette.blue.dark} 100%)`,
                 backdropFilter: 'blur(10px)',
                 color: 'white',
                 transition: 'all 0.3s ease',
                 '&:hover': {
-                  background: `linear-gradient(135deg, ${theme.vars.palette.secondary.main} 0%, ${theme.vars.palette.primary.main} 100%)`,
+                  transform: 'translateY(-2px)',
+                  background: `linear-gradient(135deg, ${theme.vars.palette.blue.dark} 0%, ${theme.vars.palette.blue.main} 100%)`,
                 },
               }}
             >
@@ -264,6 +273,8 @@ export function HomeHero({ sx, ...other }) {
           <Stack spacing={5} sx={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
             <m.div style={{ y: y2 }}>{renderHeading}</m.div>
           </Stack>
+
+          <m.div style={{ y: y3 }}>{renderRatings}</m.div>
 
           <m.div style={{ y: y4 }}>{renderButtons}</m.div>
         </Container>
