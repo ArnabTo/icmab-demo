@@ -245,7 +245,7 @@ export function Texts({ sx, ...other }) {
           animate={{ x: ['0%', '-50%'] }}
           transition={{ duration: 100, ease: 'linear', repeat: Infinity }}
         >
-          Set The Standard Which way you will go
+          Institute of Cost and Management Accountants of Bangladesh
         </m.text>
       </Box>
     </Box>

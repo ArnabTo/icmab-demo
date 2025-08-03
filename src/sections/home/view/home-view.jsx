@@ -5,15 +5,11 @@ import Stack from '@mui/material/Stack';
 import { BackToTop } from 'src/components/animate/back-to-top';
 import { ScrollProgress, useScrollProgress } from 'src/components/animate/scroll-progress';
 
-import HomeQuote from '../home-quote';
 import { HomeHero } from '../home-hero';
 import { HomeFAQs } from '../home-faqs';
-import HomeLanding from '../home-landing';
+import SmoothScroll from '../smooth-scroll';
 import ExploreCMA from '../home-explore-cma';
-import { HomeMinimal } from '../home-minimal';
-import HomeGridGallery from '../home-gallery-comp';
 import HomeTabComponent from '../home-tab-component';
-import HomeBangladeshMap from '../home-bangladesh-map';
 import HomeOurSuccessStories from '../home-our-success';
 import { HomeAdvertisement } from '../home-advertisement';
 
@@ -37,23 +33,11 @@ export function HomeView() {
       {/* <HomeLandingSection/> */}
 
       <Stack sx={{ position: 'relative', bgcolor: 'background.default' }}>
-        <HomeLanding />
-
-        <HomeBangladeshMap />
-
-        {/* <HomeProgramsEvents/> */}
-
-        {/* <OurUsers/> */}
-
-        <HomeGridGallery />
+        <SmoothScroll />
 
         <HomeTabComponent />
 
-        <HomeMinimal />
-
         <HomeOurSuccessStories />
-
-        <HomeQuote />
 
         <ExploreCMA />
 
@@ -66,8 +50,6 @@ export function HomeView() {
         {/* <HomeIntegrations /> */}
 
         {/* <HomePricing /> */}
-
-        {/* <HomeTestimonials /> */}
 
         <HomeFAQs />
 

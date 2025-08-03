@@ -1,16 +1,24 @@
 'use client';
 
+import { m } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Marker, Geography, Geographies, ComposableMap, ZoomableGroup } from 'react-simple-maps';
 
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
+import { paths } from 'src/routes/paths';
+
 import { CONFIG } from 'src/config-global';
+import { varAlpha } from 'src/theme/styles';
+
+import { Iconify } from 'src/components/iconify';
+import { varFade, AnimateBorder } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
 
@@ -57,10 +65,10 @@ export default function HomeBangladeshMap() {
   return (
     <Box
       sx={{
-        py: { xs: 10, md: 15 },
         position: 'relative',
         backgroundImage: 'url(/assets/background/background-3-blur.webp)',
         backgroundSize: 'cover',
+        height: '100vh',
         backgroundPosition: 'center',
         '&::before': {
           content: '""',
@@ -74,20 +82,21 @@ export default function HomeBangladeshMap() {
         },
       }}
     >
-      <Container sx={{ position: 'relative', zIndex: 9 }}>
+      <Container maxWidth="xxl" sx={{ position: 'relative', zIndex: 9, mx: 7 }}>
         <Typography
           variant="h2"
           textAlign="center"
           sx={{
+            mt: { xs: 10, md: 15 },
             mb: 8,
             color: 'common.white',
           }}
         >
-          Who Are We
+          Who We Are
         </Typography>
 
-        <Grid container spacing={3} alignItems="stretch">
-          <Grid item xs={12} md={5} sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Grid container spacing={5} alignItems="flex-start" justifyContent="space-between">
+          <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ color: 'common.white', flex: 1 }} ref={paragraphRef}>
               <Typography variant="h4" paragraph>
                 Institute of Cost and Management Accountants of Bangladesh
@@ -113,12 +122,50 @@ export default function HomeBangladeshMap() {
                 trained to identify cost-saving opportunities, optimize resource allocation, and
                 improve financial performance.
               </Typography>
+
+              <Box
+                component={m.div}
+                variants={varFade({ distance: 24 }).inLeft}
+                sx={{
+                  borderRadius: 1.25,
+                  position: 'relative',
+                }}
+              >
+                <AnimateBorder
+                  animate={{
+                    duration: 12,
+                    distance: 40,
+                    color: [theme.vars.palette.common.white, theme.vars.palette.common.white],
+                    outline: `135deg, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}`,
+                  }}
+                  sx={{ width: '15%', height: 1, position: 'absolute' }}
+                />
+
+                <Button
+                  size="large"
+                  variant="text"
+                  target="_blank"
+                  rel="noopener"
+                  href={paths.components}
+                  endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
+                  sx={{ px: 2, color: 'common.white'}}
+                >
+                  Get Started
+                </Button>
+              </Box>
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={7} sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column' }}>
             <Box
-              sx={{ flex: 1, overflow: 'hidden', borderRadius: 2, position: 'relative' }}
+              sx={{
+                flex: 1,
+                overflow: 'hidden',
+                borderRadius: 2,
+                position: 'relative',
+                height: '70%',
+                width: '70%',
+              }}
               ref={mapBoxRef}
             >
               <Paper

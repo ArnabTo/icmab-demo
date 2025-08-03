@@ -1,7 +1,7 @@
 import React from 'react';
 import { m, LazyMotion, domAnimation } from 'framer-motion';
 
-import { Box, Grid, useTheme, Container, Typography, useMediaQuery } from '@mui/material';
+import { Box, Grid, Container, Typography } from '@mui/material';
 
 import { MotionViewport } from 'src/components/animate';
 
@@ -9,9 +9,6 @@ import { SectionTitle } from './components/section-title';
 import { FloatLine, FloatPlusIcon } from './components/svg-elements';
 
 export default function HomeGridGallery() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
   const renderLines = (
     <>
       <FloatPlusIcon sx={{ top: 72, left: 72 }} />
@@ -22,10 +19,9 @@ export default function HomeGridGallery() {
     </>
   );
 
-  // Sample images and boxes (replace with your actual content)
   const images = [
     'https://icmab.gov.bd/wp-content/uploads/2024/12/Picture-7.jpg',
-    'https://www.icmab.gov.bd/wp-content/uploads/2019/12/lifeaticmab.jpg',
+    'https://icmab.gov.bd/wp-content/uploads/2019/12/lifeaticmab.jpg',
     'https://icmab.gov.bd/wp-content/uploads/2023/11/r1.jpg',
     'https://icmab.gov.bd/wp-content/uploads/2025/03/ICMAB-MoU-with-HR-scaled.jpg',
   ];
@@ -49,14 +45,6 @@ export default function HomeGridGallery() {
     },
   };
 
-  const hoverVariants = {
-    rest: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      transition: { duration: 0.3 },
-    },
-  };
-
   const DescriptionBox = ({ title, style, description }) => (
     <m.div
       initial="offscreen"
@@ -64,13 +52,13 @@ export default function HomeGridGallery() {
       viewport={{ once: true, amount: 0.5 }}
       variants={scrollVariants}
       whileHover={{
-        scale: 1.05,
+        scale: 1.01,
         transition: { duration: 0.3 },
       }}
       style={{
         width: '100%',
         height: '100%',
-        backgroundColor: 'yellow',
+        backgroundColor: '#2065D1',
         padding: '20px',
         borderRadius: '8px',
         display: 'flex',
@@ -174,7 +162,7 @@ export default function HomeGridGallery() {
                 left: 0,
                 width: '100%',
                 height: 2,
-                bgcolor: 'primary.main',
+                bgcolor: 'blue.main',
                 transform: isHovered ? 'scaleX(1)' : 'scaleX(0)',
                 transition: 'transform 0.3s ease',
                 transformOrigin: 'left',
@@ -189,7 +177,7 @@ export default function HomeGridGallery() {
   };
 
   return (
-    <Box component="section">
+    <Box component="section" sx={{ height: '100vh', maxHeight: '100vh', overflow: 'hidden' }}>
       <MotionViewport>
         {renderLines}
 
@@ -199,12 +187,12 @@ export default function HomeGridGallery() {
             alignItems: 'center',
             maxWidth: { xl: '1300px !important' },
             margin: 'auto',
+            height: '100%',
+            my: 5,
           }}
         >
           <SectionTitle
-            caption="Stories"
-            title="Our"
-            txtGradient="Stories"
+            title="Our Stories"
             sx={{ mb: { xs: 5 }, textAlign: { xs: 'center', md: 'left' } }}
           />
           <LazyMotion features={domAnimation}>
@@ -218,14 +206,16 @@ export default function HomeGridGallery() {
                 },
               }}
               viewport={{ once: true }}
-              style={{ width: '100%' }}
+              style={{ width: '100%', height: '100%' }}
             >
               <Box
                 sx={{
                   overflow: 'hidden',
                   margin: 'auto',
                   width: '100%',
-                  pb: 6,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
                 <Grid
@@ -233,35 +223,37 @@ export default function HomeGridGallery() {
                   sx={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(3, 1fr)',
-                    gridTemplateRows: 'repeat(3, 300px)',
+                    gridTemplateRows: 'repeat(3, minmax(0, 1fr))',
                     width: '100%',
                     gap: 1,
+                    height: '80vh',
+                    mx: 0.5
                   }}
                 >
                   {/* First Row */}
-                  <Grid item sx={{ gridColumn: '1 / 2', gridRow: '1 / 2' }}>
+                  <Grid item sx={{ gridColumn: '1 / 2', gridRow: '1 / 2', height: '100%' }}>
                     <DescriptionBox title="#No 1" description="In Bangladesh" />
                   </Grid>
-                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '1 / 2' }}>
+                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '1 / 2', height: '100%' }}>
                     <ImageItem src={images[0]} />
                   </Grid>
-                  <Grid item sx={{ gridColumn: '3 / 4', gridRow: '1 / 2' }}>
+                  <Grid item sx={{ gridColumn: '3 / 4', gridRow: '1 / 2', height: '100%' }}>
                     <ImageItem src={images[1]} />
                   </Grid>
 
                   {/* Second Row */}
-                  <Grid item sx={{ gridColumn: '1 / 2', gridRow: '2 / 4' }}>
+                  <Grid item sx={{ gridColumn: '1 / 2', gridRow: '2 / 4', height: '100%' }}>
                     <ImageItem src={images[2]} rowSpan={2} />
                   </Grid>
-                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '2 / 3' }}>
+                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '2 / 3', height: '100%' }}>
                     <DescriptionBox title="#15" description="Worldwide" />
                   </Grid>
-                  <Grid item sx={{ gridColumn: '3 / 4', gridRow: '2 / 4' }}>
+                  <Grid item sx={{ gridColumn: '3 / 4', gridRow: '2 / 4', height: '100%' }}>
                     <ImageItem src={images[3]} rowSpan={2} />
                   </Grid>
 
                   {/* Third Row */}
-                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '3 / 4' }}>
+                  <Grid item sx={{ gridColumn: '2 / 3', gridRow: '3 / 4', height: '100%' }}>
                     <ImageItem src={images[0]} />
                   </Grid>
                 </Grid>

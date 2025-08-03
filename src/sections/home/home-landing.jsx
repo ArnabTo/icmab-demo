@@ -4,9 +4,13 @@ import { m, useInView } from 'framer-motion';
 import { useTheme } from '@mui/material/styles';
 import { Box, Button, Typography } from '@mui/material';
 
-import { CONFIG } from 'src/config-global';
+import { paths } from 'src/routes/paths';
 
-import { MotionViewport } from 'src/components/animate';
+import { CONFIG } from 'src/config-global';
+import { varAlpha } from 'src/theme/styles';
+
+import { Iconify } from 'src/components/iconify';
+import { varFade, AnimateBorder, MotionViewport } from 'src/components/animate';
 
 export default function HomeLanding() {
   const theme = useTheme();
@@ -19,8 +23,7 @@ export default function HomeLanding() {
     <Box
       ref={ref}
       sx={{
-        py: { xs: 10, md: 15 },
-        height: { xs: '100vh', md: 'calc(100vh - 64px)' },
+        height: '70vh',
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
         justifyContent: 'center',
@@ -30,7 +33,7 @@ export default function HomeLanding() {
       }}
     >
       <MotionViewport>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', height: '100vh', width: '100%', }}>
           {/* Left Side - Text */}
           <Box
             sx={{
@@ -53,10 +56,11 @@ export default function HomeLanding() {
                 height: 0,
                 borderTop: '32px solid transparent',
                 borderBottom: '32px solid transparent',
-                borderLeft: `32px solid ${theme.palette.secondary.main}`,
+                borderLeft: `32px solid ${theme.palette.blue.main}`,
                 zIndex: 4,
               }}
             />
+
             <m.div
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -65,9 +69,9 @@ export default function HomeLanding() {
             >
               <Box
                 sx={{
-                  background: theme.palette.secondary.main,
+                  background: theme.palette.blue.main,
                   opacity: 0.9,
-                  padding: theme.spacing(3),
+                  padding: theme.spacing(7),
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
@@ -75,26 +79,46 @@ export default function HomeLanding() {
                   alignItems: 'flex-start',
                 }}
               >
-                <Typography variant="h3" color="common.white">
+                <Typography variant="h3">
                   Welcome to ICMAB
                 </Typography>
-                <Typography variant="h3" color="common.white">
-                  Enter into Lifetime profession with CMA Certificate.
-                </Typography>
-                <Typography variant="body1" color="common.white">
+                <Typography variant="subtitle1" mt={2} mb={4}>
                   Enter into Lifetime profession with CMA Certificate.
                 </Typography>
 
-                <Button
-                  variant="contained"
+                <Box
+                  component={m.div}
+                  variants={varFade({ distance: 24 }).inLeft}
                   sx={{
-                    backgroundColor: theme.palette.common.white,
-                    color: theme.palette.common.black,
-                    mt: 3,
+                    display: 'flex',
+                    borderRadius: 1.25,
+                    position: 'relative',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
-                  Get Started
-                </Button>
+                  <AnimateBorder
+                    animate={{
+                      duration: 12,
+                      distance: 40,
+                      color: [theme.vars.palette.common.white, theme.vars.palette.common.white],
+                      outline: `135deg, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}, ${varAlpha(theme.vars.palette.common.whiteChannel, 0.04)}`,
+                    }}
+                    sx={{ width: 1, height: 1, position: 'absolute' }}
+                  />
+
+                  <Button
+                    size="large"
+                    variant="text"
+                    target="_blank"
+                    rel="noopener"
+                    href={paths.components}
+                    endIcon={<Iconify icon="eva:arrow-ios-forward-fill" />}
+                    sx={{ px: 2, color: 'common.white' }}
+                  >
+                    Get Started
+                  </Button>
+                </Box>
               </Box>
             </m.div>
           </Box>

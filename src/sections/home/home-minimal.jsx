@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -25,7 +24,6 @@ export function HomeMinimal({ sx, ...other }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const theme = useTheme();
 
   // Define colors for the pie chart
   const COLORS = [
@@ -282,7 +280,7 @@ export function HomeMinimal({ sx, ...other }) {
 
                 {/* <m.div variants={itemVariants}>
                     <Box height={300}>
-                      <ChartRadialBar 
+                      <ChartRadialBar
                         chart={{
                           series: locationData.map(item => item.value),
                           categories: locationData.map(item => item.city),

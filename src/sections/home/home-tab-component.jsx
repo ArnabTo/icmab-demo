@@ -82,6 +82,13 @@ export default function HomeTabComponent() {
           >
             {title}
           </Typography>
+          <Button
+            variant="contained"
+            color="blue"
+            startIcon={<Iconify icon="solar:arrow-right-up-line-duotone" />}
+          >
+            Explore More
+          </Button>
         </Box>
       </Box>
     </Card>
@@ -106,8 +113,13 @@ export default function HomeTabComponent() {
         },
       }}
     >
+      <Iconify icon="duo-icons:certificate" width={28} sx={{ color: 'white' }} />
       <Typography variant="h6">{title}</Typography>
-      <Button variant="contained" sx={{ width: 'fit-content' }}>
+      <Button
+        variant="contained"
+        sx={{ backgroundColor: 'white', color: 'blue.main', width: 'fit-content' }}
+        startIcon={<Iconify icon="solar:arrow-right-up-line-duotone" />}
+      >
         Read more...
       </Button>
     </Paper>
@@ -133,19 +145,15 @@ export default function HomeTabComponent() {
             {/* Row 1 - Two Boxes in Flex */}
             <Box sx={{ display: 'flex', gap: 3 }}>
               <ContentLink
-                title="Cost and Management Accountants Act-2018 (Authentic English Text)"
+                title="Cost and Management Accountants Act-2018"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
-                title="Scholarship Programs"
+                title="Cost and Management Accountants"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -156,19 +164,15 @@ export default function HomeTabComponent() {
             {/* Row 4 - Two Boxes in Flex */}
             <Box sx={{ display: 'flex', gap: 3 }}>
               <ContentLink
-                title="Cost and Management Accountants Act-2018 (Authentic English Text)"
+                title="Cost and Management Accountants Act-2018"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
-                title="Scholarship Programs"
+                title="Cost and Management Accountants"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -196,17 +200,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -235,17 +235,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -265,17 +261,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -304,17 +296,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -345,17 +333,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
             </Box>
@@ -364,17 +348,13 @@ export default function HomeTabComponent() {
               <ContentLink
                 title="Scholarship Programs"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.grey[400]
-                    : theme.palette.secondary.main
+                  theme.palette.mode === 'dark' ? theme.palette.grey[500] : theme.palette.blue.main
                 }
               />
               <ContentLink
                 title="Cost and Management Accountants Act-2018 (Authentic English Text)"
                 bgColor={
-                  theme.palette.mode === 'dark'
-                    ? theme.palette.secondary.main
-                    : theme.palette.grey[400]
+                  theme.palette.mode === 'dark' ? theme.palette.blue.main : theme.palette.grey[500]
                 }
               />
             </Box>

@@ -6,17 +6,14 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { CONFIG } from 'src/config-global';
-import { textGradient } from 'src/theme/styles';
+import { varAlpha, textGradient } from 'src/theme/styles';
 
-import { Image } from 'src/components/image';
 import { Iconify } from 'src/components/iconify';
 import { varFade, MotionContainer } from 'src/components/animate';
 
@@ -24,7 +21,6 @@ import { HeroBackground } from './components/hero-background';
 
 // ----------------------------------------------------------------------
 
-const smKey = 'sm';
 const mdKey = 'md';
 
 export function HomeHero({ sx, ...other }) {
@@ -60,7 +56,7 @@ export function HomeHero({ sx, ...other }) {
           my: 0,
           mx: 'auto',
           maxWidth: 1080,
-          color: theme.palette.text.primary,
+          color: theme.palette.common.white,
           fontFamily: theme.typography.fontSecondaryFamily,
           fontSize: { xs: 36, sm: 48, md: 56, lg: 72 },
           lineHeight: { xs: '54px', sm: '72px', md: '84px', lg: '90px' },
@@ -105,27 +101,6 @@ export function HomeHero({ sx, ...other }) {
           Business and Accounting Profession
         </Box>
       </Box>
-    </AnimatedDiv>
-  );
-
-  const renderText = (
-    <AnimatedDiv>
-      <Typography
-        variant="body2"
-        sx={{
-          mx: 'auto',
-          maxWidth: 680,
-          color: 'rgba(255, 255, 255, 0.9)',
-          fontSize: { xs: 18, sm: 20, md: 22 },
-          lineHeight: 1.6,
-          fontWeight: 300,
-          textAlign: 'center',
-          [theme.breakpoints.up(smKey)]: { whiteSpace: 'pre-line' },
-        }}
-      >
-        Enter into a lifetime profession with CMA Certificate.\nSet the standard for your
-        professional journey and unlock unlimited career potential.
-      </Typography>
     </AnimatedDiv>
   );
 
@@ -224,6 +199,7 @@ export function HomeHero({ sx, ...other }) {
           height: 'fit-content',
           maxHeight: '100vh',
           display: 'block',
+          backgroundColor: varAlpha(theme.palette.common.blackChannel, 0.7),
           willChange: 'opacity',
           mt: 'calc(var(--layout-header-desktop-height) * -1)',
         },
@@ -246,28 +222,11 @@ export function HomeHero({ sx, ...other }) {
           height: '100%',
           objectFit: 'cover',
           zIndex: -2,
-          opacity: 0.5,
           transition: 'opacity 1s ease-in-out',
         }}
       >
-        <source src="/assets/background/hero.mp4" type="video/mp4" />
+        <source src="/assets/background/video2.mp4" type="video/mp4" />
       </Box>
-
-      {/* Gradient Overlay */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          background: `
-            radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%),
-            linear-gradient(135deg, rgba(25,118,210,0.2) 0%, rgba(156,39,176,0.1) 50%, rgba(255,152,0,0.2) 100%)
-          `,
-          zIndex: -1,
-        }}
-      />
 
       <Box
         component={m.div}
@@ -303,52 +262,7 @@ export function HomeHero({ sx, ...other }) {
           }}
         >
           <Stack spacing={5} sx={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
-            <m.div style={{ y: y1 }}>
-              <Box
-                component={m.div}
-                animate={{
-                  scale: [1, 1.05, 1],
-                  filter: [
-                    'drop-shadow(0 0 20px rgba(255,255,255,0.3))',
-                    'drop-shadow(0 0 40px rgba(255,255,255,0.6))',
-                    'drop-shadow(0 0 20px rgba(255,255,255,0.3))',
-                  ],
-                }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                sx={{
-                  position: 'relative',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: -20,
-                    left: -20,
-                    right: -20,
-                    bottom: -20,
-                    background:
-                      'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
-                    borderRadius: '50%',
-                    animation: 'pulse 2s infinite',
-                    '@keyframes pulse': {
-                      '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
-                      '50%': { opacity: 0.6, transform: 'scale(1.05)' },
-                    },
-                  },
-                }}
-              >
-                <Image
-                  sx={{
-                    width: { xs: '180px', md: '220px' },
-                    height: 'auto',
-                    objectFit: 'contain',
-                    filter: 'brightness(1.2) contrast(1.1)',
-                  }}
-                  src={`${CONFIG.assetsDir}/logo/logo-single.png`}
-                />
-              </Box>
-            </m.div>
-
             <m.div style={{ y: y2 }}>{renderHeading}</m.div>
-            {/* <m.div style={{ y: y3 }}>{renderText}</m.div> */}
           </Stack>
 
           <m.div style={{ y: y4 }}>{renderButtons}</m.div>

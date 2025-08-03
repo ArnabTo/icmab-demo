@@ -47,6 +47,14 @@
     "darker": "#7A0916",
     "contrastText": "#FFFFFF"
   },
+  "blue": {
+    "lighter": "#D1E9FC",
+    "light": "#76B0F1",
+    "main": "#2065D1",
+    "dark": "#103996",
+    "darker": "#061B64",
+    "contrastText": "#FFFFFF"
+  },
   "grey": {
     "50": "#FCFDFD",
     "100": "#F9FAFB",

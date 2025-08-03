@@ -3,7 +3,7 @@ import { loadingButtonClasses } from '@mui/lab/LoadingButton';
 
 import { varAlpha, stylesMode } from '../../styles';
 
-const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'];
+const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error', 'blue'];
 
 function styleColors(ownerState, styles) {
   const outputStyle = COLORS.reduce((acc, color) => {
