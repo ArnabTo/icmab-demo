@@ -5,7 +5,6 @@ import { useTheme } from '@mui/material/styles';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { CONFIG } from 'src/config-global';
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
 import { MotionContainer } from 'src/components/animate';
@@ -35,7 +34,7 @@ export function HeroBackground({ sx, ...other }) {
         },
         /* text */
         '--hero-text-stroke-width': 1,
-        '--hero-text-stroke-color': varAlpha(theme.vars.palette.grey['500Channel'], 1),
+        '--hero-text-stroke-color': varAlpha(theme.vars.palette.grey['900Channel'], 1),
         [stylesMode.dark]: {
           '--hero-text-stroke-color': varAlpha(theme.vars.palette.grey['600Channel'], 0.25),
         },
@@ -110,10 +109,6 @@ export function HeroBackground({ sx, ...other }) {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          backgroundImage: `linear-gradient(180deg, ${theme.vars.palette.background.default} 12%, ${varAlpha(theme.vars.palette.background.defaultChannel, 0.92)} 50%, ${theme.vars.palette.background.default} 88%), url('${CONFIG.assetsDir}/assets/background/background-3.webp')`,
-          [stylesMode.dark]: {
-            backgroundImage: `url('${CONFIG.assetsDir}/assets/images/home/hero-blur.webp'), linear-gradient(180deg, ${theme.vars.palette.background.default} 12%, ${varAlpha(theme.vars.palette.background.defaultChannel, 0.96)} 50%, ${theme.vars.palette.background.default} 88%), url('${CONFIG.assetsDir}/assets/background/background-3.webp')`,
-          },
         }}
       />
     </Box>

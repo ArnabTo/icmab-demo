@@ -1,7 +1,7 @@
 import React from 'react';
-import { domAnimation, LazyMotion, m } from 'framer-motion';
+import { m, LazyMotion, domAnimation } from 'framer-motion';
 
-import { Box, Typography, Grid, useTheme, useMediaQuery, Container } from '@mui/material';
+import { Box, Grid, useTheme, Container, Typography, useMediaQuery } from '@mui/material';
 
 import { MotionViewport } from 'src/components/animate';
 
@@ -35,26 +35,26 @@ export default function HomeGridGallery() {
     offscreen: {
       opacity: 0,
       y: 100,
-      scale: 0.8
+      scale: 0.8,
     },
     onscreen: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         bounce: 0.4,
-        duration: 0.8
-      }
-    }
+        duration: 0.8,
+      },
+    },
   };
 
   const hoverVariants = {
     rest: { scale: 1 },
     hover: {
       scale: 1.05,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   const DescriptionBox = ({ title, style, description }) => (
@@ -65,7 +65,7 @@ export default function HomeGridGallery() {
       variants={scrollVariants}
       whileHover={{
         scale: 1.05,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.3 },
       }}
       style={{
         width: '100%',
@@ -79,7 +79,7 @@ export default function HomeGridGallery() {
         alignItems: 'center',
         boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
         perspective: '1000px',
-        ...style
+        ...style,
       }}
     >
       <Typography
@@ -88,7 +88,7 @@ export default function HomeGridGallery() {
           fontSize: '2rem',
           fontWeight: 'bold',
           transition: 'transform 0.3s',
-          ':hover': { transform: 'scale(1.1)' }
+          ':hover': { transform: 'scale(1.1)' },
         }}
       >
         {title}
@@ -98,7 +98,7 @@ export default function HomeGridGallery() {
         sx={{
           marginTop: '10px',
           transition: 'transform 0.3s',
-          ':hover': { transform: 'scale(1.1)' }
+          ':hover': { transform: 'scale(1.1)' },
         }}
       >
         {description}
@@ -126,7 +126,7 @@ export default function HomeGridGallery() {
           boxShadow: '0 6px 12px rgba(0,0,0,0.15)',
           perspective: '1000px',
           position: 'relative',
-          ...style
+          ...style,
         }}
       >
         <m.img
@@ -141,7 +141,7 @@ export default function HomeGridGallery() {
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            borderRadius: '8px'
+            borderRadius: '8px',
           }}
         />
 
@@ -178,7 +178,7 @@ export default function HomeGridGallery() {
                 transform: isHovered ? 'scaleX(1)' : 'scaleX(0)',
                 transition: 'transform 0.3s ease',
                 transformOrigin: 'left',
-              }
+              },
             }}
           >
             ICMAB Gallery
@@ -189,18 +189,23 @@ export default function HomeGridGallery() {
   };
 
   return (
-    <Box
-      component="section">
-
+    <Box component="section">
       <MotionViewport>
         {renderLines}
 
-        <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
+        <Container
+          sx={{
+            position: 'relative',
+            alignItems: 'center',
+            maxWidth: { xl: '1300px !important' },
+            margin: 'auto',
+          }}
+        >
           <SectionTitle
             caption="Stories"
             title="Our"
             txtGradient="Stories"
-            sx={{ mb: { xs: 5}, textAlign: { xs: 'center', md: 'left' } }}
+            sx={{ mb: { xs: 5 }, textAlign: { xs: 'center', md: 'left' } }}
           />
           <LazyMotion features={domAnimation}>
             <m.div
@@ -209,18 +214,20 @@ export default function HomeGridGallery() {
                 opacity: 1,
                 transition: {
                   duration: 0.5,
-                  staggerChildren: 0.2
-                }
+                  staggerChildren: 0.2,
+                },
               }}
               viewport={{ once: true }}
               style={{ width: '100%' }}
             >
-              <Box sx={{
-                overflow: 'hidden',
-                margin: 'auto',
-                width: '100%',
-                pb: 6
-              }}>
+              <Box
+                sx={{
+                  overflow: 'hidden',
+                  margin: 'auto',
+                  width: '100%',
+                  pb: 6,
+                }}
+              >
                 <Grid
                   container
                   sx={{
@@ -257,7 +264,6 @@ export default function HomeGridGallery() {
                   <Grid item sx={{ gridColumn: '2 / 3', gridRow: '3 / 4' }}>
                     <ImageItem src={images[0]} />
                   </Grid>
-
                 </Grid>
               </Box>
             </m.div>
@@ -266,5 +272,4 @@ export default function HomeGridGallery() {
       </MotionViewport>
     </Box>
   );
-};
-
+}

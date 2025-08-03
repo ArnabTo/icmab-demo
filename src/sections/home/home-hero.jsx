@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { m, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -27,7 +26,6 @@ import { HeroBackground } from './components/hero-background';
 
 const smKey = 'sm';
 const mdKey = 'md';
-const lgKey = 'lg';
 
 export function HomeHero({ sx, ...other }) {
   const theme = useTheme();
@@ -62,17 +60,18 @@ export function HomeHero({ sx, ...other }) {
           my: 0,
           mx: 'auto',
           maxWidth: 1080,
-          color: theme.palette.text.secondary,
+          color: theme.palette.text.primary,
           fontFamily: theme.typography.fontSecondaryFamily,
           fontSize: { xs: 36, sm: 48, md: 56, lg: 72 },
           lineHeight: { xs: '54px', sm: '72px', md: '84px', lg: '90px' },
         }}
       >
-        Creating the compititive edge for your 
-        
+        Creating the competitive edge for your
         <Box
           component={m.span}
-          animate={{ backgroundPosition: '200% center' }}
+          animate={{
+            backgroundPosition: '200% center',
+          }}
           transition={{
             duration: 20,
             ease: 'linear',
@@ -81,13 +80,29 @@ export function HomeHero({ sx, ...other }) {
           }}
           sx={{
             ...textGradient(
-              `300deg, ${theme.vars.palette.info.main} 0%, ${theme.vars.palette.secondary.main} 25%, ${theme.vars.palette.info.main} 50%, ${theme.vars.palette.secondary.main} 75%, ${theme.vars.palette.info.main} 100%`
+              `300deg, ${theme.vars.palette.info.main} 0%, ${theme.vars.palette.secondary.main} 25%, ${theme.vars.palette.info.main} 50%, ${theme.vars.palette.secondary.main} 75%, ${theme.vars.palette.primary.main} 100%`
             ),
             backgroundSize: '400%',
             ml: { xs: 0.75, md: 1, xl: 1.5 },
+            position: 'relative',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background:
+                'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%)',
+              animation: 'shimmer 3s infinite',
+              '@keyframes shimmer': {
+                '0%': { transform: 'translateX(-100%)' },
+                '100%': { transform: 'translateX(100%)' },
+              },
+            },
           }}
         >
-          Busniess and Accounting Profession
+          Business and Accounting Profession
         </Box>
       </Box>
     </AnimatedDiv>
@@ -99,39 +114,103 @@ export function HomeHero({ sx, ...other }) {
         variant="body2"
         sx={{
           mx: 'auto',
-          color: theme.palette.text.primary,
-          [theme.breakpoints.up(smKey)]: { whiteSpace: 'pre' },
-          [theme.breakpoints.up(lgKey)]: { fontSize: 20, lineHeight: '36px' },
+          maxWidth: 680,
+          color: 'rgba(255, 255, 255, 0.9)',
+          fontSize: { xs: 18, sm: 20, md: 22 },
+          lineHeight: 1.6,
+          fontWeight: 300,
+          textAlign: 'center',
+          [theme.breakpoints.up(smKey)]: { whiteSpace: 'pre-line' },
         }}
       >
-        Enter into Lifetime profession with CMA Certificate. Set the standard which way you will go.
+        Enter into a lifetime profession with CMA Certificate.\nSet the standard for your
+        professional journey and unlock unlimited career potential.
       </Typography>
     </AnimatedDiv>
   );
 
-
   const renderButtons = (
-    <Box display="flex" flexWrap="wrap" justifyContent="center" gap={{ xs: 1.5, sm: 2 }}>
+    <Box display="flex" flexWrap="wrap" justifyContent="center" gap={{ xs: 2, sm: 3 }}>
       <AnimatedDiv>
-        <Stack alignItems="center" spacing={2.5}>
-          <Button
-          sx={{ textTransform: 'none', backgroundColor: 'secondary.main' }}
-            component={RouterLink}
-            href={paths.dashboard.root}
-            color="info"
-            size="large"
-            variant="contained"
-            startIcon={<Iconify width={24} icon="iconoir:flash" />}
+        <Stack alignItems="center" spacing={3}>
+          <Box display="flex" gap={2} flexWrap="wrap" justifyContent="center">
+            <Button
+              component={RouterLink}
+              href={paths.dashboard.root}
+              variant="contained"
+              size="large"
+              startIcon={<Iconify width={24} icon="iconoir:flash" />}
+              sx={{
+                px: 4,
+                py: 1.5,
+                borderRadius: 3,
+                background: `linear-gradient(135deg, ${theme.vars.palette.primary.main} 0%, ${theme.vars.palette.secondary.main} 100%)`,
+                backdropFilter: 'blur(10px)',
+                color: 'white',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  background: `linear-gradient(135deg, ${theme.vars.palette.secondary.main} 0%, ${theme.vars.palette.primary.main} 100%)`,
+                },
+              }}
+            >
+              Get Started With Us
+            </Button>
+
+            <Button
+              variant="outlined"
+              size="large"
+              startIcon={<Iconify width={24} icon="solar:play-bold" />}
+              sx={{
+                px: 4,
+                py: 1.5,
+                borderRadius: 3,
+                color: 'white',
+                borderColor: 'rgba(255,255,255,0.3)',
+                background: 'rgba(255,255,255,0.1)',
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  borderColor: 'rgba(255,255,255,0.6)',
+                  background: 'rgba(255,255,255,0.2)',
+                },
+              }}
+            >
+              Watch Demo
+            </Button>
+          </Box>
+
+          {/* Trust indicators */}
+          <Box
+            display="flex"
+            alignItems="center"
+            gap={3}
+            sx={{
+              mt: 3,
+              color: 'rgba(255,255,255,0.8)',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+            }}
           >
-            <span>
-              Get Start With Us
-            </span>
-          </Button>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Iconify icon="material-symbols:star" sx={{ color: '#FFD700' }} />
+              <span>4.9/5 Rating</span>
+            </Box>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Iconify
+                icon="material-symbols:group"
+                sx={{ color: theme.vars.palette.primary.main }}
+              />
+              <span>10,000+ Students</span>
+            </Box>
+            <Box display="flex" alignItems="center" gap={1}>
+              <Iconify icon="material-symbols:verified" sx={{ color: '#4CAF50' }} />
+              <span>Industry Certified</span>
+            </Box>
+          </Box>
         </Stack>
       </AnimatedDiv>
     </Box>
   );
-
 
   return (
     <Box
@@ -141,9 +220,9 @@ export function HomeHero({ sx, ...other }) {
         overflow: 'hidden',
         position: 'relative',
         [theme.breakpoints.up(mdKey)]: {
-          minHeight: 760,
+          minHeight: '100vh',
           height: 'fit-content',
-          maxHeight: 1440,
+          maxHeight: '100vh',
           display: 'block',
           willChange: 'opacity',
           mt: 'calc(var(--layout-header-desktop-height) * -1)',
@@ -152,6 +231,44 @@ export function HomeHero({ sx, ...other }) {
       }}
       {...other}
     >
+      {/* Video Background */}
+      <Box
+        component="video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -2,
+          opacity: 0.5,
+          transition: 'opacity 1s ease-in-out',
+        }}
+      >
+        <source src="/assets/background/hero.mp4" type="video/mp4" />
+      </Box>
+
+      {/* Gradient Overlay */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: `
+            radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%),
+            linear-gradient(135deg, rgba(25,118,210,0.2) 0%, rgba(156,39,176,0.1) 50%, rgba(255,152,0,0.2) 100%)
+          `,
+          zIndex: -1,
+        }}
+      />
+
       <Box
         component={m.div}
         style={{ opacity }}
@@ -177,6 +294,7 @@ export function HomeHero({ sx, ...other }) {
             display: 'flex',
             alignItems: 'center',
             flexDirection: 'column',
+            position: 'relative',
             [theme.breakpoints.up(mdKey)]: {
               flex: '1 1 auto',
               justifyContent: 'center',
@@ -184,23 +302,74 @@ export function HomeHero({ sx, ...other }) {
             },
           }}
         >
-          <Stack spacing={3} sx={{ textAlign: 'center' }}>
+          <Stack spacing={5} sx={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
             <m.div style={{ y: y1 }}>
-              <Image 
-              sx={{
-              width: '200px',
-              height: 'auto',
-              objectFit: 'contain',
-            }}
-             src={`${CONFIG.assetsDir}/logo/logo-single.png`}/>
-             </m.div>
+              <Box
+                component={m.div}
+                animate={{
+                  scale: [1, 1.05, 1],
+                  filter: [
+                    'drop-shadow(0 0 20px rgba(255,255,255,0.3))',
+                    'drop-shadow(0 0 40px rgba(255,255,255,0.6))',
+                    'drop-shadow(0 0 20px rgba(255,255,255,0.3))',
+                  ],
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                sx={{
+                  position: 'relative',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: -20,
+                    left: -20,
+                    right: -20,
+                    bottom: -20,
+                    background:
+                      'radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%)',
+                    borderRadius: '50%',
+                    animation: 'pulse 2s infinite',
+                    '@keyframes pulse': {
+                      '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+                      '50%': { opacity: 0.6, transform: 'scale(1.05)' },
+                    },
+                  },
+                }}
+              >
+                <Image
+                  sx={{
+                    width: { xs: '180px', md: '220px' },
+                    height: 'auto',
+                    objectFit: 'contain',
+                    filter: 'brightness(1.2) contrast(1.1)',
+                  }}
+                  src={`${CONFIG.assetsDir}/logo/logo-single.png`}
+                />
+              </Box>
+            </m.div>
+
             <m.div style={{ y: y2 }}>{renderHeading}</m.div>
             {/* <m.div style={{ y: y3 }}>{renderText}</m.div> */}
           </Stack>
+
           <m.div style={{ y: y4 }}>{renderButtons}</m.div>
         </Container>
-
-        <HeroBackground />
+        <Box
+          component={m.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2, delay: 0.5 }}
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        >
+          <HeroBackground />
+        </Box>
       </Box>
     </Box>
   );

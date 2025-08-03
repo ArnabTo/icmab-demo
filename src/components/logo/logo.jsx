@@ -201,7 +201,7 @@ export const Logo = forwardRef(
         aria-label="Logo"
         sx={{
           ...baseSize,
-          width:'200px',
+          width: '200px',
           flexShrink: 0,
           ...(disableLink && { pointerEvents: 'none' }),
           ...sx,
@@ -213,9 +213,10 @@ export const Logo = forwardRef(
           sx={{
             width: '100px',
             height: 'auto',
-            objectFit: 'contain',
+            objectFit: 'cover',
           }}
-          src={`${CONFIG.assetsDir}/logo/logo-single.png`} />
+          src={`${CONFIG.assetsDir}/logo/logo-single.png`}
+        />
       </Box>
     );
   }

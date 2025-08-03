@@ -5,8 +5,8 @@ import axios, { endpoints } from 'src/utils/axios';
 export async function getPosts() {
   try {
     const res = await axios.get(endpoints.post.list);
-    const {data} = res;
-   console.log(data);
+    const { data } = res;
+    console.log(data);
     if (!Array.isArray(data.posts)) {
       throw new Error('Invalid posts data');
     }

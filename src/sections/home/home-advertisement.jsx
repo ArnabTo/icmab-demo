@@ -63,9 +63,9 @@ export function HomeAdvertisement({ sx, ...other }) {
         <m.div variants={varFade({ distance: 24 }).inRight}>
           <Button
             sx={{
-                  backgroundColor: theme.palette.common.white,
-                  color: theme.palette.common.black,
-              }}
+              backgroundColor: theme.palette.common.white,
+              color: theme.palette.common.black,
+            }}
             size="large"
             variant="contained"
             target="_blank"

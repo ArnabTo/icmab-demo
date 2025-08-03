@@ -1,38 +1,43 @@
 import { m } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
+import { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
-import {Chart, useChart } from 'src/components/chart';
 import { SvgColor } from 'src/components/svg-color';
+import { Chart, useChart } from 'src/components/chart';
 import { LoadingScreen } from 'src/components/loading-screen';
 import { varFade, MotionViewport } from 'src/components/animate';
 
 import { SectionTitle } from './components/section-title';
 import { CircleSvg, FloatLine, FloatPlusIcon } from './components/svg-elements';
-import { ChartRadialBar } from '../_examples/extra/chart-view/chart-radial-bar';
-
 
 // ----------------------------------------------------------------------
 
 export function HomeMinimal({ sx, ...other }) {
-
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const theme = useTheme();
 
   // Define colors for the pie chart
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658', '#8dd1e1'];
+  const COLORS = [
+    '#0088FE',
+    '#00C49F',
+    '#FFBB28',
+    '#FF8042',
+    '#8884d8',
+    '#82ca9d',
+    '#ffc658',
+    '#8dd1e1',
+  ];
 
   useEffect(() => {
     const fetchAnalyticsData = async () => {
@@ -59,10 +64,10 @@ export function HomeMinimal({ sx, ...other }) {
     if (!analyticsData || !analyticsData.rows) return [];
 
     // Combine country and city for display
-    return analyticsData.rows.map(row => ({
+    return analyticsData.rows.map((row) => ({
       name: `${row.dimensionValues[1].value}`,
       value: parseInt(row.metricValues[0].value, 10),
-      city: row.dimensionValues[1].value
+      city: row.dimensionValues[1].value,
     }));
   };
 
@@ -70,26 +75,25 @@ export function HomeMinimal({ sx, ...other }) {
 
   const locationData = [
     {
-      "name": "Dhaka",
-      "value": 14,
-      "city": "Dhaka"
+      name: 'Dhaka',
+      value: 14,
+      city: 'Dhaka',
     },
     {
-      "name": "Narsingdi",
-      "value": 16,
-      "city": "Narsingdi"
+      name: 'Narsingdi',
+      value: 16,
+      city: 'Narsingdi',
     },
     {
-      "name": "Narayanganj",
-      "value": 30,
-      "city": "Narayanganj"
+      name: 'Narayanganj',
+      value: 30,
+      city: 'Narayanganj',
     },
     {
-      "name": "Cumilla",
-      "value": 15,
-      "city": "Cumilla"
+      name: 'Cumilla',
+      value: 15,
+      city: 'Cumilla',
     },
- 
   ];
 
   const renderLines = (
@@ -144,8 +148,8 @@ export function HomeMinimal({ sx, ...other }) {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   const renderCustomLegend = () => (
@@ -155,7 +159,7 @@ export function HomeMinimal({ sx, ...other }) {
         flexWrap: 'wrap',
         justifyContent: 'center',
         mb: 2,
-        gap: 1
+        gap: 1,
       }}
     >
       {locationData.map((entry, index) => (
@@ -165,7 +169,7 @@ export function HomeMinimal({ sx, ...other }) {
             display: 'flex',
             alignItems: 'center',
             mx: 1,
-            mb: 1
+            mb: 1,
           }}
           component={m.div}
           whileHover={{ scale: 1.05 }}
@@ -176,11 +180,16 @@ export function HomeMinimal({ sx, ...other }) {
               height: 12,
               borderRadius: '50%',
               backgroundColor: COLORS[index % COLORS.length],
-              mr: 1
+              mr: 1,
             }}
           />
           <Typography variant="body2">
-            {entry.city} ({(entry.value / locationData.reduce((sum, item) => sum + item.value, 0) * 100).toFixed(0)}%)
+            {entry.city} (
+            {(
+              (entry.value / locationData.reduce((sum, item) => sum + item.value, 0)) *
+              100
+            ).toFixed(0)}
+            %)
           </Typography>
         </Box>
       ))}
@@ -189,8 +198,8 @@ export function HomeMinimal({ sx, ...other }) {
 
   const chartOptions = useChart({
     stroke: { width: 0 },
-    xaxis: { 
-      categories: locationData.map(item => item.city) 
+    xaxis: {
+      categories: locationData.map((item) => item.city),
     },
     tooltip: {
       y: {
@@ -221,42 +230,57 @@ export function HomeMinimal({ sx, ...other }) {
       <MotionViewport>
         {renderLines}
 
-        <Container sx={{ position: 'relative', alignItems: 'center', maxWidth: { xl: '1300px !important' }, margin: 'auto' }}>
-          <Grid container columnSpacing={{ xs: 0, md: 8 }} sx={{ position: 'relative', zIndex: 9, alignItems: 'center' }}>
+        <Container
+          sx={{
+            position: 'relative',
+            alignItems: 'center',
+            maxWidth: { xl: '1300px !important' },
+            margin: 'auto',
+          }}
+        >
+          <Grid
+            container
+            columnSpacing={{ xs: 0, md: 8 }}
+            sx={{ position: 'relative', zIndex: 9, alignItems: 'center' }}
+          >
             <Grid xs={12} md={6} lg={7}>
               {renderDescription}
             </Grid>
 
-            {
-              loading ? <Box><LoadingScreen /></Box>
-                :
-                <Grid item md={6} lg={5} sx={{ display: { xs: 'none', md: 'block' } }}>
-                  <m.div variants={itemVariants}>
-                    <Box height={300}>
-                      <Chart 
-                        type="bar" 
-                        series={[{ 
-                          data: locationData.map(item => item.value) 
-                        }]} 
-                        options={chartOptions} 
-                        height={320}
-                        sx={{
-                          '& .apexcharts-canvas': {
-                            bgcolor: 'background.default',
-                            borderRadius: 2,
+            {loading ? (
+              <Box>
+                <LoadingScreen />
+              </Box>
+            ) : (
+              <Grid item md={6} lg={5} sx={{ display: { xs: 'none', md: 'block' } }}>
+                <m.div variants={itemVariants}>
+                  <Box height={300}>
+                    <Chart
+                      type="bar"
+                      series={[
+                        {
+                          data: locationData.map((item) => item.value),
+                        },
+                      ]}
+                      options={chartOptions}
+                      height={320}
+                      sx={{
+                        '& .apexcharts-canvas': {
+                          bgcolor: 'background.default',
+                          borderRadius: 2,
+                          boxShadow: (localTheme) =>
+                            `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.grey['500Channel'], 0.16)}`,
+                          [stylesMode.dark]: {
                             boxShadow: (localTheme) =>
-                              `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.grey['500Channel'], 0.16)}`,
-                            [stylesMode.dark]: {
-                              boxShadow: (localTheme) =>
-                                `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.common.blackChannel, 0.16)}`,
-                            },
+                              `-40px 40px 80px 0px ${varAlpha(localTheme.vars.palette.common.blackChannel, 0.16)}`,
                           },
-                        }}
-                      />
-                    </Box>
-                  </m.div>
+                        },
+                      }}
+                    />
+                  </Box>
+                </m.div>
 
-                  {/* <m.div variants={itemVariants}>
+                {/* <m.div variants={itemVariants}>
                     <Box height={300}>
                       <ChartRadialBar 
                         chart={{
@@ -279,9 +303,8 @@ export function HomeMinimal({ sx, ...other }) {
                       />
                     </Box>
                   </m.div> */}
-                </Grid>
-            }
-
+              </Grid>
+            )}
           </Grid>
 
           <CircleSvg variants={varFade().in} sx={{ display: { xs: 'none', md: 'block' } }} />

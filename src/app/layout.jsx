@@ -55,7 +55,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang={lang ?? 'en'} suppressHydrationWarning>
       <head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRY9WVRV5"/>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRY9WVRV5" />
         <Script
           dangerouslySetInnerHTML={{
             __html: `

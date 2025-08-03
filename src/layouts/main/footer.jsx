@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -79,7 +78,7 @@ export function Footer({ layoutQuery, sx }) {
               sx={{
                 mx: 'auto',
                 maxWidth: 280,
-                mt:2,
+                mt: 2,
                 [theme.breakpoints.up(layoutQuery)]: { mx: 'unset' },
               }}
             >
@@ -113,7 +112,10 @@ export function Footer({ layoutQuery, sx }) {
               sx={{
                 flexDirection: 'column',
                 alignItems: 'center',
-                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
+                [theme.breakpoints.up(layoutQuery)]: {
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                },
               }}
             >
               {LINKS.slice(0, 1).map((list) => (
@@ -151,7 +153,10 @@ export function Footer({ layoutQuery, sx }) {
               sx={{
                 flexDirection: 'column',
                 alignItems: 'center',
-                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
+                [theme.breakpoints.up(layoutQuery)]: {
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                },
               }}
             >
               {LINKS.slice(1, 2).map((list) => (
@@ -190,7 +195,10 @@ export function Footer({ layoutQuery, sx }) {
               sx={{
                 flexDirection: 'column',
                 alignItems: 'center',
-                [theme.breakpoints.up(layoutQuery)]: { flexDirection: 'row', alignItems: 'flex-start' },
+                [theme.breakpoints.up(layoutQuery)]: {
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                },
               }}
             >
               {LINKS.slice(2).map((list) => (
@@ -224,9 +232,7 @@ export function Footer({ layoutQuery, sx }) {
           </Grid>
         </Grid>
 
-        <Typography variant="body2">
-          © All rights reserved.
-        </Typography>
+        <Typography variant="body2">© All rights reserved.</Typography>
       </Container>
     </Box>
   );

@@ -2,10 +2,8 @@
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -14,7 +12,6 @@ import { Logo } from 'src/components/logo';
 
 import { Main } from './main';
 import { NavMobile } from './nav/mobile';
-import { NavDesktop } from './nav/desktop';
 import { Footer, HomeFooter } from './footer';
 import { MenuButton } from '../components/menu-button';
 import { LayoutSection } from '../core/layout-section';

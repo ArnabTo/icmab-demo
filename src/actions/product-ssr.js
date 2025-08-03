@@ -5,7 +5,7 @@ import axios, { endpoints } from 'src/utils/axios';
 export async function getProducts() {
   try {
     const res = await axios.get(endpoints.product.list);
-    const {data} = res;
+    const { data } = res;
 
     if (!Array.isArray(data.products)) {
       throw new Error('Invalid products data');
